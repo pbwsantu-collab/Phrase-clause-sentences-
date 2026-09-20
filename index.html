@@ -1,0 +1,879 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Higher English Grammar — Phrases, Clauses &amp; Analysis</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,600;0,9..144,700;1,9..144,500&family=Source+Serif+4:ital,wght@0,400;0,500;0,600;1,400&family=Hind+Siliguri:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+:root{
+  box-sizing:border-box;
+  --paper:#f2ecdd;
+  --paper-2:#eae1cb;
+  --ink:#2b2417;
+  --ink-soft:#5a5240;
+  --ink-faint:#8a8065;
+  --rule-line:#c9bd9c;
+  --accent:#7a3b2e;
+  --accent-2:#3e5c45;
+  --gold:#a3792f;
+  --card-bg:#fbf8f0;
+  --card-border:#d8cca8;
+  --shadow:rgba(43,36,23,0.12);
+  --folio:#b99a52;
+  padding-top:env(safe-area-inset-top,0px);
+  padding-bottom:env(safe-area-inset-bottom,0px);
+}
+:root:not([data-theme="light"]){
+  --paper:#f2ecdd; --paper-2:#eae1cb; --ink:#2b2417; --ink-soft:#5a5240; --ink-faint:#8a8065;
+  --rule-line:#c9bd9c; --accent:#7a3b2e; --accent-2:#3e5c45; --gold:#a3792f;
+  --card-bg:#fbf8f0; --card-border:#d8cca8; --shadow:rgba(43,36,23,0.12); --folio:#b99a52;
+}
+@media (prefers-color-scheme: dark){
+  :root:not([data-theme="light"]){
+    --paper:#1c1913; --paper-2:#242018; --ink:#e9e0c9; --ink-soft:#c3b89a; --ink-faint:#8c8265;
+    --rule-line:#4a4432; --accent:#e0876c; --accent-2:#8fc19d; --gold:#d9ac5c;
+    --card-bg:#231f17; --card-border:#443d2c; --shadow:rgba(0,0,0,0.4); --folio:#c99a4d;
+  }
+}
+:root[data-theme="dark"]{
+  --paper:#1c1913; --paper-2:#242018; --ink:#e9e0c9; --ink-soft:#c3b89a; --ink-faint:#8c8265;
+  --rule-line:#4a4432; --accent:#e0876c; --accent-2:#8fc19d; --gold:#d9ac5c;
+  --card-bg:#231f17; --card-border:#443d2c; --shadow:rgba(0,0,0,0.4); --folio:#c99a4d;
+}
+html{scroll-padding-top:calc(96px + env(safe-area-inset-top,0px));}
+*{box-sizing:border-box;}
+html,body{height:100%;}
+body{
+  margin:0;
+  background:var(--paper);
+  color:var(--ink);
+  font-family:'Source Serif 4', Georgia, 'Times New Roman', serif;
+  font-size:16px;
+  line-height:1.62;
+  -webkit-font-smoothing:antialiased;
+}
+.bn{ font-family:'Hind Siliguri','Source Serif 4',serif; }
+h1,h2,h3,h4,.display{ font-family:'Fraunces', 'Source Serif 4', serif; }
+::selection{ background:var(--gold); color:#1c1913; }
+
+/* ---------- topbar ---------- */
+header.topbar{
+  position:sticky; top:0; z-index:50;
+  background:linear-gradient(var(--paper), var(--paper) 88%, transparent);
+  padding:calc(10px + env(safe-area-inset-top,0px)) 14px 8px;
+  border-bottom:1px solid var(--rule-line);
+}
+.brand-row{
+  display:flex; align-items:baseline; justify-content:space-between; gap:10px;
+}
+.brand{
+  font-family:'Fraunces', serif; font-weight:700; font-style:italic;
+  font-size:1.28rem; color:var(--accent); letter-spacing:0.2px;
+}
+.brand small{
+  display:block; font-family:'Source Serif 4',serif; font-style:normal; font-weight:400;
+  font-size:0.68rem; color:var(--ink-faint); letter-spacing:0.5px; margin-top:1px;
+}
+#langToggle{
+  flex:0 0 auto; border:1px solid var(--gold); background:transparent; color:var(--gold);
+  font-family:'Hind Siliguri','Source Serif 4',serif; font-size:0.85rem; font-weight:600;
+  padding:6px 12px; border-radius:999px; cursor:pointer;
+}
+#langToggle:active{ background:var(--gold); color:var(--paper); }
+
+nav.chapters{
+  display:flex; gap:6px; overflow-x:auto; -webkit-overflow-scrolling:touch;
+  margin-top:10px; padding-bottom:8px; scrollbar-width:none;
+}
+nav.chapters::-webkit-scrollbar{ display:none; }
+nav.chapters button{
+  flex:0 0 auto; white-space:nowrap;
+  font-family:'Fraunces', serif; font-size:0.86rem; font-weight:600;
+  background:transparent; border:1px solid var(--rule-line); color:var(--ink-soft);
+  padding:7px 13px; border-radius:5px; cursor:pointer;
+}
+nav.chapters button .num{ color:var(--folio); margin-right:5px; font-style:italic; }
+nav.chapters button.active{
+  background:var(--ink); color:var(--paper); border-color:var(--ink);
+}
+nav.chapters button.active .num{ color:var(--gold); }
+:root[data-theme="dark"] nav.chapters button.active,
+@media (prefers-color-scheme: dark){ nav.chapters button.active{ background:var(--accent-2); color:#12140f; border-color:var(--accent-2);} }
+
+/* ---------- layout ---------- */
+main{ max-width:720px; margin:0 auto; padding:18px 16px 60px; }
+.chapter{ display:none; }
+.chapter.active{ display:block; animation:fade .25s ease; }
+@keyframes fade{ from{opacity:0; transform:translateY(4px);} to{opacity:1; transform:none;} }
+
+.chapter-head{ margin-bottom:22px; }
+.chapter-head .kicker{ color:var(--folio); font-weight:600; letter-spacing:0.3px; font-size:0.82rem; }
+.chapter-head h1{ margin:4px 0 6px; font-size:1.7rem; font-weight:700; line-height:1.2; }
+.chapter-head .sub{ color:var(--ink-soft); font-size:0.95rem; }
+.chapter-head .sub.bn{ margin-top:4px; }
+
+.article{ position:relative; margin:0 0 26px; padding-left:38px; }
+.article::before{
+  content:attr(data-art); position:absolute; left:0; top:2px; width:30px; text-align:right;
+  font-family:'Fraunces',serif; font-style:italic; color:var(--folio); font-size:0.82rem;
+}
+.article h3{ margin:0 0 8px; font-size:1.12rem; font-weight:600; }
+.article p{ margin:0 0 10px; }
+
+.rule{
+  background:var(--card-bg); border:1px solid var(--card-border); border-left:4px solid var(--accent);
+  border-radius:3px; padding:12px 14px; margin:10px 0; font-size:0.98rem;
+}
+.rule .bn{ display:none; color:var(--ink-soft); margin-top:8px; padding-top:8px; border-top:1px dashed var(--card-border); font-size:0.95rem; }
+[data-lang="bn"] .rule .bn{ display:block; }
+
+.examples{ margin:8px 0 14px; padding:0; list-style:none; }
+.examples li{ padding:5px 0 5px 16px; position:relative; }
+.examples li::before{ content:"—"; position:absolute; left:0; color:var(--folio); }
+.examples code{ background:var(--paper-2); padding:1px 5px; border-radius:3px; font-family:inherit; font-style:italic; }
+
+.note{
+  background:var(--paper-2); border:1px dashed var(--rule-line); border-radius:3px;
+  padding:10px 13px; margin:10px 0; font-size:0.92rem; color:var(--ink-soft);
+}
+.note strong{ color:var(--ink); }
+
+.table-wrap{ overflow-x:auto; margin:12px 0; border:1px solid var(--card-border); border-radius:4px; }
+table{ border-collapse:collapse; width:100%; font-size:0.88rem; min-width:480px; background:var(--card-bg); }
+table caption{ caption-side:top; text-align:left; padding:8px 10px; font-style:italic; color:var(--ink-soft); font-size:0.85rem; }
+th,td{ border:1px solid var(--card-border); padding:7px 9px; text-align:left; vertical-align:top; }
+th{ background:var(--paper-2); font-weight:600; }
+
+.worked{
+  border:1px solid var(--card-border); border-radius:4px; margin:10px 0; overflow:hidden;
+}
+.worked > summary{
+  cursor:pointer; padding:9px 12px; background:var(--paper-2); font-weight:600; font-size:0.92rem;
+  list-style:none;
+}
+.worked > summary::-webkit-details-marker{ display:none; }
+.worked > summary::before{ content:"▸ "; color:var(--folio); }
+.worked[open] > summary::before{ content:"▾ "; }
+.worked .body{ padding:10px 14px; font-size:0.92rem; }
+.worked ol{ margin:6px 0; padding-left:20px; }
+.worked li{ margin-bottom:4px; }
+
+.divider{ border:none; border-top:1px solid var(--rule-line); margin:28px 0; }
+
+/* ---------- question bank ---------- */
+.qb-toc{
+  display:grid; grid-template-columns:1fr; gap:8px; margin-bottom:22px;
+}
+.qb-toc a{
+  display:flex; justify-content:space-between; gap:10px; align-items:baseline;
+  padding:10px 12px; border:1px solid var(--card-border); border-radius:4px; background:var(--card-bg);
+  text-decoration:none; color:var(--ink); font-size:0.92rem;
+}
+.qb-toc a .ex-no{ color:var(--folio); font-weight:700; font-family:'Fraunces',serif; font-style:italic; flex:0 0 auto; }
+.qb-toc a .ex-topic{ flex:1; }
+.qb-toc a .ex-topic .bn{ display:none; color:var(--ink-faint); font-size:0.82rem; }
+[data-lang="bn"] .qb-toc a .ex-topic .bn{ display:block; }
+
+.exercise-group{
+  border:1px solid var(--card-border); border-radius:5px; margin-bottom:16px; overflow:hidden; scroll-margin-top:110px;
+}
+.exercise-group > .eg-head{
+  padding:12px 14px; background:var(--paper-2); border-bottom:1px solid var(--card-border);
+}
+.exercise-group > .eg-head .ex-label{ color:var(--folio); font-weight:700; font-family:'Fraunces',serif; font-style:italic; font-size:0.95rem; }
+.exercise-group > .eg-head h3{ margin:2px 0 0; font-size:1.02rem; }
+.exercise-group > .eg-head .bn{ display:none; font-size:0.86rem; color:var(--ink-soft); margin-top:3px; }
+[data-lang="bn"] .exercise-group > .eg-head .bn{ display:block; }
+
+.part{ border-top:1px solid var(--card-border); }
+.part:first-of-type{ border-top:none; }
+.part > summary{
+  cursor:pointer; list-style:none; padding:10px 14px; font-size:0.9rem; display:flex; gap:8px; align-items:baseline;
+}
+.part > summary::-webkit-details-marker{ display:none; }
+.part > summary::before{ content:"▸"; color:var(--gold); flex:0 0 auto; }
+.part[open] > summary::before{ content:"▾"; }
+.part > summary .plabel{ font-weight:600; color:var(--accent); }
+.part-body{ padding:0 14px 14px 30px; }
+.part-body .instr{ color:var(--ink-soft); font-size:0.88rem; margin:0 0 8px; font-style:italic; }
+.part-body ol{ margin:0; padding-left:20px; }
+.part-body ol li{ margin-bottom:7px; font-size:0.95rem; }
+.count-tag{ margin-left:auto; color:var(--ink-faint); font-size:0.78rem; flex:0 0 auto; }
+
+.qitem-list{ list-style:none; margin:0; padding:0; counter-reset:qnum; }
+.qitem{ counter-increment:qnum; padding:10px 0; border-bottom:1px dashed var(--card-border); }
+.qitem:last-child{ border-bottom:none; }
+.qitem .qtext{ font-size:0.95rem; margin-bottom:7px; padding-left:26px; position:relative; }
+.qitem .qtext::before{
+  content:counter(qnum)"."; position:absolute; left:0; top:0; color:var(--folio);
+  font-family:'Fraunces',serif; font-style:italic; font-weight:600; font-size:0.9rem;
+}
+.ans-toggle{
+  margin-left:26px; border:1px solid var(--accent); background:transparent; color:var(--accent);
+  font-family:'Hind Siliguri','Source Serif 4',serif; font-size:0.78rem; font-weight:600;
+  padding:5px 11px; border-radius:999px; cursor:pointer;
+}
+.ans-toggle.open{ background:var(--accent); color:var(--paper); }
+.ans-panel{
+  margin:9px 0 4px 26px; padding:10px 12px; background:var(--paper-2);
+  border-left:3px solid var(--accent-2); border-radius:3px; font-size:0.9rem;
+}
+.ans-panel .ans-en{ margin-bottom:8px; }
+.ans-panel .ans-en::before{ content:"Answer — "; font-weight:700; color:var(--accent-2); }
+.ans-panel .ans-bn{ color:var(--ink-soft); padding-top:8px; border-top:1px dashed var(--card-border); line-height:1.7; }
+.ans-panel .ans-bn::before{ content:"বাংলা ব্যাখ্যা — "; font-weight:700; color:var(--gold); display:block; margin-bottom:3px; font-family:'Hind Siliguri',serif; }
+
+/* back to top */
+#toTop{
+  position:fixed; right:16px; bottom:calc(16px + env(safe-area-inset-bottom,0px));
+  width:42px; height:42px; border-radius:50%; border:1px solid var(--gold); background:var(--card-bg);
+  color:var(--gold); font-size:1.1rem; display:none; align-items:center; justify-content:center; cursor:pointer;
+  box-shadow:0 2px 8px var(--shadow);
+}
+#toTop.show{ display:flex; }
+
+footer.pagefoot{ text-align:center; color:var(--ink-faint); font-size:0.78rem; padding:20px 0 4px; }
+</style>
+</head>
+<body>
+<div id="app" data-lang="en">
+
+<header class="topbar">
+  <div class="brand-row">
+    <div class="brand">A Text-Book of Higher English Grammar
+      <small data-en="Phrases · Clauses · Sentences · Analysis — a bilingual study companion" data-bn="বাক্যাংশ · খণ্ডবাক্য · বাক্য · বিশ্লেষণ — একটি দ্বিভাষিক অধ্যয়ন সহায়িকা"></small>
+    </div>
+    <button id="langToggle" type="button">বাংলা</button>
+  </div>
+  <nav class="chapters" id="chapterNav">
+    <button data-target="phrases" class="active"><span class="num">I</span><span data-en="Phrases" data-bn="বাক্যাংশ"></span></button>
+    <button data-target="clauses"><span class="num">II</span><span data-en="Clauses" data-bn="খণ্ডবাক্য"></span></button>
+    <button data-target="sentences"><span class="num">III</span><span data-en="Sentences" data-bn="বাক্যের প্রকার"></span></button>
+    <button data-target="analysis"><span class="num">IV</span><span data-en="Analysis" data-bn="বিশ্লেষণ"></span></button>
+    <button data-target="difficulties"><span class="num">V</span><span data-en="Difficulties" data-bn="জটিল বিষয়"></span></button>
+    <button data-target="syntax"><span class="num">VI</span><span data-en="Syntax" data-bn="বাক্যরীতি"></span></button>
+    <button data-target="qbank"><span class="num">✎</span><span data-en="Question Bank" data-bn="প্রশ্নভাণ্ডার"></span></button>
+  </nav>
+</header>
+
+<main>
+
+<!-- ============================================================ CHAPTER I — PHRASES ============================================================ -->
+<section id="phrases" class="chapter active">
+  <div class="chapter-head">
+    <div class="kicker">Chapter XXXIII</div>
+    <h1>Phrases</h1>
+    <div class="sub" data-en="A phrase is a group of words with no subject or finite verb of its own, doing the work of a single part of speech." data-bn="Phrase হলো এমন একগুচ্ছ শব্দ যার নিজস্ব Subject বা Finite Verb নেই, কিন্তু যা বাক্যে একটি নির্দিষ্ট পদের কাজ করে।"></div>
+  </div>
+
+  <div class="article" data-art="406">
+    <h3>Six kinds of Phrases</h3>
+    <p>Phrases are classified by the part of speech whose work they do in the sentence.</p>
+
+    <div class="rule">
+      <strong data-en="(1) Noun Phrase" data-bn="(১) Noun Phrase"></strong> — <span data-en="does the work of a Noun." data-bn="বাক্যে বিশেষ্যের (Noun) কাজ করে।"></span>
+      <div class="bn">যে Phrase বাক্যে Noun-এর কাজ করে, তাকে Noun Phrase বলে।</div>
+    </div>
+    <ul class="examples">
+      <li><code>To ride well</code> requires practice.</li>
+      <li>His <code>going home</code> is uncertain.</li>
+      <li>He likes <code>to play tennis</code>.</li>
+      <li>He enjoys <code>walking by the river-side</code>.</li>
+    </ul>
+
+    <div class="rule">
+      <strong data-en="(2) Adjective Phrase" data-bn="(২) Adjective Phrase"></strong> — <span data-en="does the work of an Adjective." data-bn="বাক্যে বিশেষণের (Adjective) কাজ করে।"></span>
+      <div class="bn">যে Phrase বাক্যে Adjective-এর কাজ করে অর্থাৎ কোনো Noun বা Pronoun-কে বিশেষিত করে, তাকে Adjective Phrase বলে।</div>
+    </div>
+    <ul class="examples">
+      <li>He gave me <code>a chain of gold</code> (= a gold chain).</li>
+      <li>He is <code>without fear</code> (= fearless).</li>
+      <li>It is <code>the deed of a hero</code> (= a heroic deed).</li>
+      <li>I am <code>free from blame</code> (= blameless).</li>
+      <li>He is <code>a man of fame</code> (= a famous man).</li>
+      <li>This is a cycle <code>made in England</code> (= an English cycle).</li>
+      <li>The house <code>built long ago</code> (= the old house) fell down.</li>
+    </ul>
+    <p>Not every Adjective Phrase can be replaced by a single Adjective:</p>
+    <ul class="examples">
+      <li>The man <code>in the street</code> knows it.</li>
+      <li>The tree <code>in front of my house</code> has been cut down.</li>
+      <li>A boy <code>desirous of winning the prize</code> must work hard.</li>
+    </ul>
+    <div class="note"><strong>Note —</strong> The same phrase may be Noun or Adjectival depending on use. <em>Walking by the river-side</em> is a Noun phrase in "He enjoys walking by the river-side," but Adjectival in "The boy walking by the river-side is my brother."</div>
+
+    <div class="rule">
+      <strong data-en="(3) Adverbial Phrase" data-bn="(৩) Adverbial Phrase"></strong> — <span data-en="does the work of an Adverb." data-bn="বাক্যে ক্রিয়া-বিশেষণের (Adverb) কাজ করে।"></span>
+      <div class="bn">যে Phrase বাক্যে Adverb-এর কাজ করে, তাকে Adverbial Phrase বলে।</div>
+    </div>
+    <ul class="examples">
+      <li>He was <code>at the place</code> (= there).</li>
+      <li>He worked <code>with care</code> (= carefully).</li>
+      <li>He came <code>at a great speed</code> (= quickly).</li>
+      <li>I want it <code>at this moment</code> (= now).</li>
+      <li>You can get it <code>in all places</code> (= everywhere).</li>
+      <li>He will come <code>before very long</code> (= soon).</li>
+      <li>He fell down <code>on this spot</code> (= here).</li>
+    </ul>
+    <p>Not all Adverbial Phrases have a one-word Adverb equivalent:</p>
+    <ul class="examples">
+      <li>He came <code>to see me</code>.</li>
+      <li>We fell <code>from the tree</code>.</li>
+      <li>Come <code>into the garden</code>.</li>
+      <li>This must be done <code>at any price</code>.</li>
+      <li>He lives <code>on a small income</code>.</li>
+    </ul>
+    <div class="note"><strong>Note —</strong> The same phrase may be Adjectival or Adverbial depending on use. In "He is in the room," <em>in the room</em> is Adverbial; in "The men in the room rushed out," it is Adjectival.</div>
+
+    <div class="rule">
+      <strong data-en="(4) Prepositional Phrase" data-bn="(৪) Prepositional Phrase"></strong> — <span data-en="does the work of a Preposition." data-bn="বাক্যে Preposition-এর কাজ করে।"></span>
+      <div class="bn">যে Phrase বাক্যে Preposition-এর কাজ করে, তাকে Prepositional Phrase বলে।</div>
+    </div>
+    <ul class="examples">
+      <li>He stood <code>in front of</code> me.</li>
+      <li>She is <code>at the point of</code> death.</li>
+      <li>He persevered <code>in the teeth of</code> all opposition.</li>
+      <li>He could not come <code>on account of</code> illness.</li>
+    </ul>
+    <div class="note"><strong>Note —</strong> The whole phrase <em>in front of</em> in "He stood in front of me" is Adverbial as a unit (qualifying <em>stood</em>), yet the phrase itself works prepositionally.</div>
+
+    <div class="rule">
+      <strong data-en="(5) Conjunctional Phrase" data-bn="(৫) Conjunctional Phrase"></strong> — <span data-en="does the work of a Conjunction." data-bn="বাক্যে Conjunction-এর কাজ করে।"></span>
+    </div>
+    <ul class="examples">
+      <li>Come <code>as soon as</code> you can.</li>
+      <li><code>No sooner</code> had he left the place <code>than</code> the fire broke out.</li>
+      <li><code>Not only</code> he <code>but</code> his brother <code>also</code> were present.</li>
+    </ul>
+
+    <div class="rule">
+      <strong data-en="(6) Interjectional Phrase" data-bn="(৬) Interjectional Phrase"></strong> — <span data-en="does the work of an Interjection." data-bn="বাক্যে Interjection-এর কাজ করে।"></span>
+    </div>
+    <ul class="examples">
+      <li><code>What a pity!</code></li>
+      <li><code>By Jove!</code></li>
+      <li><code>Good heavens!</code></li>
+    </ul>
+
+    <div class="note"><strong>Note —</strong> Some grammarians use the term "verbal phrase" for group verbs (<em>He laughs at me. He looks down upon me.</em>) — but since these contain a finite verb, the term "phrase" strictly does not apply to them.</div>
+  </div>
+</section>
+
+<!-- ============================================================ CHAPTER II — CLAUSES ============================================================ -->
+<section id="clauses" class="chapter">
+  <div class="chapter-head">
+    <div class="kicker">Chapter XXXIV</div>
+    <h1>Clauses</h1>
+    <div class="sub" data-en="A clause is a group of words with a subject and a predicate of its own, forming part of a bigger sentence." data-bn="Clause হলো এমন একগুচ্ছ শব্দ যার নিজস্ব Subject ও Predicate আছে, কিন্তু যা একটি বড় বাক্যের অংশ মাত্র।"></div>
+  </div>
+
+  <div class="article" data-art="407">
+    <h3 data-en="What is a Clause?" data-bn="Clause কাকে বলে?"></h3>
+    <p>In <em>"As he is ill, he cannot come,"</em> both "As he is ill" and "he cannot come" are small sentences (each with its own subject and predicate) forming part of the bigger sentence. Such small sentences are called <strong>clauses</strong>.</p>
+    <div class="rule">
+      <span data-en="A Clause is a sentence forming part of a bigger sentence — a group of words having a subject and a finite verb of its own." data-bn=""></span>
+      <div class="bn">একগুচ্ছ শব্দ, যার নিজস্ব Subject ও Finite Verb আছে, কিন্তু যা একটি বৃহত্তর বাক্যের অংশ মাত্র, তাকে Clause বলে।</div>
+    </div>
+    <p><strong>Remember:</strong> a finite verb is the main mark of a clause — the number of clauses in a sentence equals the number of finite verbs in it.</p>
+  </div>
+
+  <div class="article" data-art="408-410">
+    <h3 data-en="Kinds of Clauses" data-bn="Clause-এর প্রকারভেদ"></h3>
+    <p>Clauses are of three kinds: <strong>Principal</strong>, <strong>Subordinate (Dependent)</strong>, and <strong>Co-ordinate</strong>.</p>
+
+    <div class="rule">
+      <strong data-en="Principal Clause" data-bn="Principal Clause"></strong> <span data-en="— stands by itself and makes complete sense on its own; the clause on which a Subordinate Clause depends." data-bn=""></span>
+      <div class="bn">যে Clause একা দাঁড়িয়ে সম্পূর্ণ অর্থ প্রকাশ করে এবং যার উপর Subordinate Clause নির্ভরশীল, তাকে Principal Clause বলে।</div>
+    </div>
+    <div class="rule">
+      <strong data-en="Subordinate / Dependent Clause" data-bn="Subordinate Clause"></strong> <span data-en="— depends on another clause and cannot stand alone with complete sense." data-bn=""></span>
+      <div class="bn">যে Clause অন্য একটি Clause-এর উপর নির্ভরশীল এবং একা সম্পূর্ণ অর্থ প্রকাশ করতে পারে না, তাকে Subordinate Clause বলে।</div>
+    </div>
+
+    <div class="table-wrap">
+      <table>
+        <caption>Principal vs. Subordinate Clause</caption>
+        <thead><tr><th>Sentence</th><th>Principal Clause</th><th>Subordinate Clause</th></tr></thead>
+        <tbody>
+          <tr><td>I know where he is.</td><td>I know</td><td>where he is</td></tr>
+          <tr><td>The book that you gave me is lost.</td><td>The book is lost</td><td>that you gave me</td></tr>
+          <tr><td>If you come you can meet him.</td><td>you can meet him</td><td>If you come</td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div class="rule">
+      <strong data-en="Co-ordinate Clause" data-bn="Co-ordinate Clause"></strong> <span data-en="— of the same rank as another clause, joined to it by a co-ordinating conjunction (and, but, or, yet, therefore…)." data-bn=""></span>
+      <div class="bn">সমান মর্যাদাসম্পন্ন দুটি Clause, যেগুলো Co-ordinating Conjunction (and, but, or ইত্যাদি) দ্বারা যুক্ত থাকে, তাদের Co-ordinate Clause বলে। একটি Co-ordinate Clause একটি Principal Clause-এর সঙ্গেও যুক্ত হতে পারে, আবার একটি Subordinate Clause-এর সঙ্গেও।</div>
+    </div>
+    <ul class="examples">
+      <li>He left the place, <code>but</code> I remained there.</li>
+      <li><code>Either</code> you must come <code>or</code> I shall go.</li>
+      <li>He is lame <code>and</code> cannot go there alone.</li>
+      <li>I cannot come <code>for</code> I am ill.</li>
+      <li><code>Read or</code> you will fail.</li>
+    </ul>
+  </div>
+
+  <hr class="divider">
+
+  <div class="article" data-art="412-413">
+    <h3 data-en="A. The Noun Clause" data-bn="ক. Noun Clause"></h3>
+    <div class="rule">
+      <span data-en="A Noun Clause does the work of a Noun. It is usually introduced by that (expressed or understood), or by an interrogative pronoun / adverb." data-bn=""></span>
+      <div class="bn">যে Clause বাক্যে Noun-এর কাজ করে, তাকে Noun Clause বলে। সাধারণত that, বা interrogative pronoun/adverb (what, who, why, when ইত্যাদি) দিয়ে এটি শুরু হয়।</div>
+    </div>
+    <ul class="examples">
+      <li>I know <code>that he is ill</code>.</li>
+      <li>They say <code>(that) he is dead</code>.</li>
+      <li><code>That he is ill</code> is known to all.</li>
+      <li>I know <code>what he wants</code>.</li>
+      <li>I shall enquire <code>who did it</code>.</li>
+      <li>I asked him <code>if (or whether) he was there</code>.</li>
+    </ul>
+    <p>The Noun Clause may serve as:</p>
+    <ul class="examples">
+      <li><strong>(a) Subject of a verb</strong> — <code>That he is ill</code> is known to all.</li>
+      <li><strong>(b) Object of a verb</strong> — I know <code>when he will come</code>.</li>
+      <li><strong>(c) Object of a preposition</strong> — I know nothing of <code>what he will do</code>.</li>
+      <li><strong>(d) Complement to a verb</strong> — That is <code>what we expected</code>.</li>
+      <li><strong>(e) In apposition to a noun or "it"</strong> — There is a rumour <code>that he is dead</code>.</li>
+    </ul>
+  </div>
+
+  <div class="article" data-art="414-418">
+    <h3 data-en="B. The Adjective Clause" data-bn="খ. Adjective Clause"></h3>
+    <div class="rule">
+      <span data-en="An Adjective Clause does the work of an Adjective, qualifying a noun or pronoun." data-bn=""></span>
+      <div class="bn">যে Clause বাক্যে Adjective-এর কাজ করে অর্থাৎ কোনো Noun বা Pronoun-কে বিশেষিত করে, তাকে Adjective Clause বলে।</div>
+    </div>
+    <ul class="examples">
+      <li>I know the boy <code>who did it</code>.</li>
+      <li>This is the place <code>where he was born</code>.</li>
+      <li>I have lost the book <code>(which) you gave me</code>.</li>
+      <li>This is the reason <code>why he failed</code>.</li>
+    </ul>
+    <p>It is introduced by <strong>Relative Pronouns</strong> (who, which, that, as) or <strong>Relative Adverbs</strong> (when, where, how, why, whence, as). The relative pronoun is often omitted when it would stand in the objective case: <em>That is the man (whom) I saw.</em></p>
+
+    <div class="note">
+      <strong data-en="Restrictive vs. Continuative" data-bn="সীমাবদ্ধকারী বনাম বর্ণনামূলক"></strong><br>
+      A clause used <strong>restrictively</strong> (defining its antecedent) is Subordinate Adjectival. Used <strong>continuatively</strong> (adding extra detail, "and he/it/there…") it is Co-ordinate, not Adjectival.
+      <div class="table-wrap" style="margin-top:8px;">
+        <table>
+          <thead><tr><th>Restrictive (Subordinate Adjectival)</th><th>Continuative (Co-ordinate)</th></tr></thead>
+          <tbody>
+            <tr><td>The book which I bought is lost.</td><td>My horse, which (= and it) is in the stable, is an Arab.</td></tr>
+            <tr><td>I know the boys who are present.</td><td>I saw him yesterday, when (= and then) he gave the news.</td></tr>
+            <tr><td>I know the place where he lives.</td><td>I went to your father, who (= and he) promised to help me.</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <p style="margin:8px 0 0;">A restrictive clause may be introduced by <em>that</em>; a continuative clause never is. The presence of commas alone does not decide the matter — restrictive clauses may also carry commas.</p>
+    </div>
+  </div>
+
+  <div class="article" data-art="419-420">
+    <h3 data-en="C. The Adverbial Clause" data-bn="গ. Adverbial Clause"></h3>
+    <div class="rule">
+      <span data-en="An Adverbial Clause does the work of an Adverb, modifying a verb, adjective, or another adverb." data-bn=""></span>
+      <div class="bn">যে Clause বাক্যে Adverb-এর কাজ করে, তাকে Adverbial Clause বলে।</div>
+    </div>
+    <div class="table-wrap">
+      <table>
+        <caption>Nine kinds of Adverbial Clause</caption>
+        <thead><tr><th>Kind</th><th>Introduced by</th><th>Example</th></tr></thead>
+        <tbody>
+          <tr><td>Time</td><td>when, while, after, before, till, until, since</td><td>He came <em>when I was there</em>.</td></tr>
+          <tr><td>Place</td><td>where, whence, wherever</td><td>Stay <em>where you are</em>.</td></tr>
+          <tr><td>Reason / Cause</td><td>because, as, since, that</td><td>He cannot come <em>because he is ill</em>.</td></tr>
+          <tr><td>Purpose</td><td>that, in order that, so that, lest</td><td>We read <em>that we may learn</em>.</td></tr>
+          <tr><td>Result</td><td>that, so…that, such…that</td><td>I am so tired <em>that I cannot walk</em>.</td></tr>
+          <tr><td>Manner</td><td>as</td><td>It happened <em>as I expected</em>.</td></tr>
+          <tr><td>Condition / Supposition</td><td>if, unless, in case, provided (that)</td><td>I shall not go <em>unless you come</em>.</td></tr>
+          <tr><td>Concession</td><td>though, although, even if; whoever, whatever, however</td><td><em>Though he is poor</em>, he is honest.</td></tr>
+          <tr><td>Comparison / Degree</td><td>so…as, as…as, than, the…the</td><td>He is not so tall <em>as his brother</em>.</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <div class="note"><strong>Note —</strong> Sometimes the conjunction is omitted: <em>Had I been rich</em> (= if I had been rich), I would have helped you. Also, <em>who</em> and <em>which</em> make Adverbial clauses of cause or purpose: <em>My brother who (= because he) is ill cannot come.</em></div>
+  </div>
+
+  <div class="article" data-art="421">
+    <h3 data-en="Function decides the kind" data-bn="কাজের উপরেই শ্রেণি নির্ভর করে"></h3>
+    <p>The nature of a clause depends on the work it does, not on its wording. The same clause can be Noun, Adjective, or Adverbial in different sentences:</p>
+    <ul class="examples">
+      <li>I know <code>where he lives</code> — <em>Noun clause, object of "know"</em>.</li>
+      <li>I know the place <code>where he lives</code> — <em>Adjective clause, qualifying "place"</em>.</li>
+      <li>I shall go <code>where he lives</code> — <em>Adverbial clause, qualifying "shall go"</em>.</li>
+    </ul>
+  </div>
+</section>
+
+<!-- ============================================================ CHAPTER III — SENTENCES ============================================================ -->
+<section id="sentences" class="chapter">
+  <div class="chapter-head">
+    <div class="kicker">Chapter XXXV</div>
+    <h1 data-en="Simple, Complex, Compound Sentences" data-bn="Simple, Complex ও Compound বাক্য"></h1>
+    <div class="sub" data-en="Sentences are classified by how many clauses they contain and how those clauses relate to each other." data-bn="একটি বাক্যে কয়টি Clause আছে এবং সেগুলোর সম্পর্ক কী, তার ভিত্তিতে বাক্যের শ্রেণিবিভাগ করা হয়।"></div>
+  </div>
+
+  <div class="article" data-art="423">
+    <h3 data-en="Simple Sentence" data-bn="Simple Sentence"></h3>
+    <div class="rule">
+      <span data-en="A Simple sentence contains only one subject and one finite verb, expressed or understood — however many qualifying words, objects, etc. it may also carry." data-bn=""></span>
+      <div class="bn">যে বাক্যে মাত্র একটি Subject ও একটি Finite Verb থাকে, তাকে Simple Sentence বলে।</div>
+    </div>
+    <ul class="examples">
+      <li>I came.</li>
+      <li>I came home yesterday.</li>
+      <li>The good boy obeys his parents.</li>
+      <li>Barking dogs seldom bite.</li>
+    </ul>
+  </div>
+
+  <div class="article" data-art="424">
+    <h3 data-en="Complex Sentence" data-bn="Complex Sentence"></h3>
+    <div class="rule">
+      <span data-en="A Complex sentence contains one Principal Clause with one or more Subordinate Clauses. Its number of clauses equals its number of finite verbs." data-bn=""></span>
+      <div class="bn">যে বাক্যে একটি Principal Clause এবং এক বা একাধিক Subordinate Clause থাকে, তাকে Complex Sentence বলে।</div>
+    </div>
+    <div class="worked">
+      <summary>Worked example — <em>As you are rich, you must help those who are poor.</em></summary>
+      <div class="body">
+        <p>Three finite verbs (<em>are, must help, are</em>) → three clauses:</p>
+        <ol>
+          <li><strong>As you are rich</strong> — Subordinate Adverbial clause, qualifying "must help".</li>
+          <li><strong>you must help those</strong> — Principal clause.</li>
+          <li><strong>who are poor</strong> — Subordinate Adjective clause, qualifying "those".</li>
+        </ol>
+      </div>
+    </div>
+  </div>
+
+  <div class="article" data-art="425-426">
+    <h3 data-en="Compound Sentence" data-bn="Compound Sentence"></h3>
+    <div class="rule">
+      <span data-en="A Compound sentence contains two or more independent (Principal) clauses — with or without subordinate clauses — joined by co-ordinating conjunctions (and, or, but, else, however, therefore, still, yet, for, etc.)." data-bn=""></span>
+      <div class="bn">যে বাক্যে দুই বা ততোধিক Principal Clause Co-ordinating Conjunction দ্বারা যুক্ত থাকে, তাকে Compound Sentence বলে। Subordinate Clause থাকতেও পারে, না-ও থাকতে পারে।</div>
+    </div>
+    <div class="worked">
+      <summary>Worked example — <em>The book which you gave me was a good one, but I have lost it.</em></summary>
+      <div class="body">
+        <p>Three finite verbs (<em>gave, was, have lost</em>) → three clauses:</p>
+        <ol>
+          <li><strong>The book was a good one</strong> — Principal clause.</li>
+          <li><strong>which you gave me</strong> — Subordinate Adjective clause, qualifying "book".</li>
+          <li><strong>I have lost it</strong> — Principal clause.</li>
+        </ol>
+      </div>
+    </div>
+    <div class="note"><strong>Note —</strong> Co-ordinate clauses are also joined by a Relative Pronoun/Adverb used <em>continuatively</em> (breakable into "and he," "and it," "but he," etc.): <em>I went to the Principal who (= and he) spoke kindly to me.</em></div>
+  </div>
+
+  <div class="article" data-art="427-428">
+    <h3 data-en="Contracted &amp; Compound-Subject Sentences" data-bn="সংক্ষিপ্ত ও যৌগিক-কর্তা বাক্য"></h3>
+    <p><strong>Contracted sentences</strong> avoid repeating a shared word:</p>
+    <ul class="examples">
+      <li>He came and (he) delivered a lecture. <em>— shared subject</em></li>
+      <li>They as well as you are wrong. <em>— shared predicate</em></li>
+      <li>He is poor, but (he is) honest.</li>
+    </ul>
+    <p>When two nouns are joined by <em>and</em>, they usually form one <strong>compound subject</strong> to a plural verb — the sentence stays <em>Simple</em>, not Compound: <em>He and his friend left the place.</em> Likewise when the subjects are inseparable in meaning: <em>He and I are great friends. Curry and rice is my favourite dish.</em></p>
+  </div>
+
+  <div class="article" data-art="429">
+    <h3 data-en="Complex or Compound? The test" data-bn="Complex নাকি Compound? — পরীক্ষা"></h3>
+    <p>Whether a sentence is Complex or Compound depends on the number of its <strong>Principal</strong> clauses, not on how many subordinate clauses accompany them. If the co-ordinated clauses are independent, the sentence is Compound; if they are subordinate, it is Complex.</p>
+    <div class="note"><strong>Note —</strong> Modern grammarians sometimes call a two-principal-clause sentence <em>Double</em>, and a sentence of more than two principal co-ordinate clauses <em>Multiple</em>.</div>
+  </div>
+</section>
+
+<!-- ============================================================ CHAPTER IV — ANALYSIS ============================================================ -->
+<section id="analysis" class="chapter">
+  <div class="chapter-head">
+    <div class="kicker">Chapters XXXVI – XXXVII</div>
+    <h1 data-en="Analysis of Sentences" data-bn="বাক্য বিশ্লেষণ"></h1>
+    <div class="sub" data-en="Analysis divides a sentence into its parts according to the work each part does." data-bn="একটি বাক্যকে তার বিভিন্ন অংশে ভাগ করে, প্রতিটি অংশের কাজ অনুযায়ী পর্যালোচনা করাকে Analysis বলে।"></div>
+  </div>
+
+  <div class="article" data-art="430">
+    <h3 data-en="The Parts of a Sentence" data-bn="বাক্যের অংশসমূহ"></h3>
+    <div class="table-wrap">
+      <table>
+        <thead><tr><th>Group</th><th>Parts</th></tr></thead>
+        <tbody>
+          <tr><td><strong>Subject group</strong></td><td>The Subject · Adjuncts to the Subject (if any)</td></tr>
+          <tr><td><strong>Predicate group</strong></td><td>The Predicate-verb · Object (if any) · Complements (if any) · Adverbial Adjuncts (if any)</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <div class="note"><strong>Note —</strong> Only the Subject and the Predicate-verb are essential; everything else may or may not be present.</div>
+  </div>
+
+  <div class="article" data-art="431-432">
+    <h3 data-en="The Subject &amp; its Adjuncts" data-bn="Subject ও তার Adjunct"></h3>
+    <div class="rule"><span data-en="The Subject denotes the person or thing spoken about — it must be a noun or noun-equivalent." data-bn=""></span></div>
+    <ul class="examples">
+      <li>Noun — Birds fly.</li>
+      <li>Pronoun — We laugh.</li>
+      <li>Adjective — The virtuous are happy.</li>
+      <li>Infinitive — To err is human.</li>
+      <li>Gerund — Swimming is a good exercise.</li>
+      <li>Phrase — Success at any cost was his aim.</li>
+      <li>Clause — That you will come is known.</li>
+    </ul>
+    <p><strong>Adjuncts to the Subject</strong> are Adjectives or their equivalents:</p>
+    <ul class="examples">
+      <li>Adjective — A <code>good</code> boy is loved by all.</li>
+      <li>Participle — <code>Flying</code> clouds are seen in the sky.</li>
+      <li>Participial phrase — The boy <code>playing on the lawn</code> is my brother.</li>
+      <li>Possessive noun/pronoun — <code>My</code> brother is ill.</li>
+      <li>Noun in apposition — Ramesh, <code>my brother</code>, is ill.</li>
+      <li>Preposition with object — A man <code>of principle</code> is liked by all.</li>
+      <li>Adjective Clause — Boys <code>who work hard</code> succeed.</li>
+    </ul>
+  </div>
+
+  <div class="article" data-art="433">
+    <h3 data-en="Adverbial Adjuncts" data-bn="Adverbial Adjunct"></h3>
+    <div class="rule"><span data-en="Adverbial Adjuncts are Adverbs or their equivalents, extending the Predicate — showing how, when, why, or where an action is performed." data-bn=""></span></div>
+    <ul class="examples">
+      <li>Adverb — He speaks <code>well</code>.</li>
+      <li>Adjective used as adverb — He died <code>happy</code>.</li>
+      <li>Adverbial phrase — They walked <code>side by side</code>.</li>
+      <li>Participle — He went away <code>disappointed</code>.</li>
+      <li>Gerundial Infinitive — He came <code>to see me</code>.</li>
+      <li>Preposition with object — We arrived <code>in time</code>.</li>
+      <li>Absolute phrase — <code>The sun having set</code>, we left the place.</li>
+      <li>Adverbial Clause — He went away <code>after I had left</code>.</li>
+    </ul>
+  </div>
+
+  <div class="article" data-art="434-435">
+    <h3 data-en="The Object &amp; the Complement" data-bn="Object ও Complement"></h3>
+    <p><strong>The Object</strong> must be a noun or noun-equivalent: <em>I like the boy / him / to swim / swimming / how to do it / that he did it.</em></p>
+    <p><strong>The Complement</strong> completes the predicate and may be:</p>
+    <div class="table-wrap">
+      <table>
+        <thead><tr><th>Type</th><th>Subjective Complement</th><th>Objective Complement</th></tr></thead>
+        <tbody>
+          <tr><td>Adjective</td><td>We are ready.</td><td>We made him happy.</td></tr>
+          <tr><td>Noun</td><td>He was appointed chairman.</td><td>He called me a traitor.</td></tr>
+          <tr><td>Participle</td><td>It looks charming.</td><td>I found him tired.</td></tr>
+          <tr><td>Possessive</td><td>The book is mine.</td><td>He made my cause his own.</td></tr>
+          <tr><td>Noun Clause</td><td>The report is that he is ill.</td><td>We make ourselves what we are.</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+  <hr class="divider">
+
+  <div class="article" data-art="436">
+    <h3 data-en="Analysing a Simple Sentence" data-bn="Simple Sentence বিশ্লেষণের পদ্ধতি"></h3>
+    <ol>
+      <li data-en="Find the Finite Verb — set it down as the Predicate." data-bn="Finite Verb খুঁজে বের করে Predicate হিসেবে লেখো।"></li>
+      <li data-en="Find the Subject of that verb." data-bn="সেই verb-এর Subject খুঁজে বের করো।"></li>
+      <li data-en="Note the Adjuncts of the Subject, if any." data-bn="Subject-এর Adjunct থাকলে তা লেখো।"></li>
+      <li data-en="If the verb is transitive, note the Object(s) with qualifying words." data-bn="Verb-টি সকর্মক (transitive) হলে Object লেখো।"></li>
+      <li data-en="Note the Complement(s), if any." data-bn="Complement থাকলে তা লেখো।"></li>
+      <li data-en="Note the Adverbial Adjuncts, if any." data-bn="Adverbial Adjunct থাকলে তা লেখো।"></li>
+    </ol>
+    <div class="worked">
+      <summary>Worked example — <em>The judge, accepting the verdict of the jury, found the prisoner guilty.</em></summary>
+      <div class="body">
+        <table style="width:100%;border-collapse:collapse;font-size:0.9rem;">
+          <tr><td style="padding:3px 6px;"><strong>Subject</strong></td><td style="padding:3px 6px;">Judge</td></tr>
+          <tr><td style="padding:3px 6px;"><strong>Adjuncts to Subject</strong></td><td style="padding:3px 6px;">the; accepting the verdict of the jury</td></tr>
+          <tr><td style="padding:3px 6px;"><strong>Finite Verb</strong></td><td style="padding:3px 6px;">found</td></tr>
+          <tr><td style="padding:3px 6px;"><strong>Object</strong></td><td style="padding:3px 6px;">the prisoner</td></tr>
+          <tr><td style="padding:3px 6px;"><strong>Complement</strong></td><td style="padding:3px 6px;">guilty</td></tr>
+        </table>
+      </div>
+    </div>
+  </div>
+
+  <div class="article" data-art="437">
+    <h3 data-en="Analysing a Complex Sentence" data-bn="Complex Sentence বিশ্লেষণের পদ্ধতি"></h3>
+    <ol>
+      <li>Divide the sentence into as many clauses as there are finite verbs.</li>
+      <li>Find which clause carries the main assertion — that is the Principal clause; the rest are Subordinate.</li>
+      <li>Classify each subordinate clause (Noun / Adjective / Adverbial) by the work it does.</li>
+      <li>Show how each subordinate clause relates to the Principal clause (and to each other).</li>
+      <li>Analyse each clause separately if a full analysis is required.</li>
+    </ol>
+    <div class="worked">
+      <summary>Worked example — <em>When I was a student, I was one day taken to task by the Principal … for having played on behalf of an outside club, though he had ordered us not to do so.</em></summary>
+      <div class="body">
+        <ol>
+          <li><strong>I was one day … club</strong> — Principal clause.</li>
+          <li><strong>When I was a student</strong> — Subordinate Adverbial clause, qualifying "was taken" in (1).</li>
+          <li><strong>though he … do so</strong> — Subordinate Adverbial clause, qualifying "having played" in (1).</li>
+        </ol>
+      </div>
+    </div>
+  </div>
+
+  <div class="article" data-art="438">
+    <h3 data-en="Analysing a Compound Sentence" data-bn="Compound Sentence বিশ্লেষণের পদ্ধতি"></h3>
+    <ol>
+      <li>Break the sentence into as many clauses as there are finite verbs.</li>
+      <li>Identify the principal co-ordinate clauses.</li>
+      <li>Identify any subordinate clauses and show their relation.</li>
+      <li>Analyse each clause separately if full analysis is required.</li>
+    </ol>
+    <div class="worked">
+      <summary>Worked example — <em>Though I was ill, I tried my best; but, as ill luck would have it, all my exertion ended in smoke.</em></summary>
+      <div class="body">
+        <ol>
+          <li><strong>I tried my best</strong> — Principal clause.</li>
+          <li><strong>Though I was ill</strong> — Subordinate Adverbial clause, qualifying "tried" in (1).</li>
+          <li><strong>All my exertion ended in smoke</strong> — Principal clause, co-ordinate with (1).</li>
+          <li><strong>As ill luck would have it</strong> — Subordinate Adverbial clause, qualifying "ended" in (3).</li>
+        </ol>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================================ CHAPTER V — DIFFICULTIES ============================================================ -->
+<section id="difficulties" class="chapter">
+  <div class="chapter-head">
+    <div class="kicker">Chapter XXXVIII</div>
+    <h1 data-en="A Few Difficulties in Analysis" data-bn="বিশ্লেষণে কিছু জটিল বিষয়"></h1>
+    <div class="sub" data-en="Special cases that trip students up — quotations, parentheses, 'it', ellipsis, 'as', and 'what'." data-bn="উদ্ধৃতি, Parenthesis, 'it', উহ্য অংশ, 'as' ও 'what' — যেসব ক্ষেত্রে ছাত্রছাত্রীরা সাধারণত ভুল করে।"></div>
+  </div>
+
+  <div class="article" data-art="439">
+    <h3 data-en="Quoted Sentences" data-bn="উদ্ধৃত বাক্য"></h3>
+    <p>A quotation is <strong>not</strong> treated as a Noun Clause — it has no connective linking it to the principal clause, and its wording cannot be altered as a clause's could. Instead, treat the whole quotation as a single noun-equivalent, the object of the reporting verb — so <em>He said, "I am ill"</em> is analysed as a <strong>Simple</strong> sentence.</p>
+  </div>
+
+  <div class="article" data-art="440">
+    <h3 data-en="Parenthetic Expressions" data-bn="Parenthetic Expression"></h3>
+    <p>In <em>"He is the man who, I believe, did it,"</em> the words <em>I believe</em> can be removed without harming the sentence — they are analysed separately as a <strong>Parenthetic Clause</strong>, not as Principal or Subordinate.</p>
+  </div>
+
+  <div class="article" data-art="441-443">
+    <h3 data-en="Introductory 'There' · Interjections · Vocatives" data-bn="'There', Interjection ও Vocative"></h3>
+    <ul class="examples">
+      <li><strong>Introductory "There"</strong> (e.g. <em>There is a man here</em>) has lost its force as an adverb of place; it is customarily analysed as an adverbial adjunct, though some treat it separately as "introductory."</li>
+      <li><strong>Interjections</strong> (<em>Ah! Alas!</em>) generally stand outside the grammatical structure and are simply labelled "Interjection" — unless the interjection is itself the object of a transitive verb: <em>"Bravo!" shouted the people.</em></li>
+      <li><strong>Vocatives</strong> (<em>Mookerjee, I shall help you</em>) usually stand in apposition to "you," expressed or understood.</li>
+    </ul>
+  </div>
+
+  <div class="article" data-art="444">
+    <h3 data-en="The Use of 'It'" data-bn="'It'-এর ব্যবহার"></h3>
+    <ul class="examples">
+      <li><strong>It … that</strong> — distinguish a defining <em>relative</em> clause (<em>It is money that I want</em>) from a conjunction clause in apposition (<em>It is to you that I gave it</em>).</li>
+      <li><strong>It + infinitive</strong> — <em>It is easy to say so</em>: "It" may be the formal subject, with the infinitive as the real subject (or in apposition to it).</li>
+      <li><strong>It as formal object</strong> — <em>I found it difficult to do the work</em>: "It" is the object of the verb, and the infinitive/clause stands in apposition to it.</li>
+    </ul>
+  </div>
+
+  <div class="article" data-art="445">
+    <h3 data-en="Ellipses and Omissions" data-bn="উহ্য অংশ (Ellipsis)"></h3>
+    <p>Always supply what is understood. <em>He is stronger than I</em> → Principal: <em>He is stronger</em>; Adverbial clause: <em>Than I (am strong)</em>. Conjunctions like <em>if, though, till, when, while, whether…or</em> often introduce elliptical clauses: <em>Though (he is) ill, he will attend the meeting.</em></p>
+  </div>
+
+  <div class="article" data-art="446-450">
+    <h3 data-en="Clauses with 'as' · 'the…the' · 'what' · Miscellaneous" data-bn="'as', 'the…the', 'what' ও অন্যান্য"></h3>
+    <p><strong>"As"-clauses</strong> are frequently elliptical: <em>He acted as before</em> = <em>As (he had acted) before</em> — an Adverbial clause qualifying "acted".</p>
+    <p><strong>"The…the" construction</strong> — in <em>The more, the merrier</em>, the second clause is Principal (expanded: "By how much more, by so much merrier").</p>
+    <p><strong>Noun Clause as Subject</strong> — <em>That he is right is known</em> is best split as: (1) <em>(That he is right) is known</em> — Principal Clause; (2) <em>That he is right</em> — Noun Clause, subject to "is known".</p>
+    <p><strong>"What"-clauses</strong> — a dependent question (<em>I know what he means</em>) is a Noun Clause, object of the verb; when "what" is a relative pronoun (= "that which"), it may be treated as a Noun Clause or, by supplying the antecedent, as an Adjective Clause.</p>
+    <div class="note"><strong>Miscellaneous —</strong> "No sooner…than" reverses which clause is Principal compared with "as soon as." In "rather than," <em>than</em> functions as a preposition, not a conjunction.</div>
+  </div>
+</section>
+
+<!-- ============================================================ CHAPTER VI — SYNTAX ============================================================ -->
+<section id="syntax" class="chapter">
+  <div class="chapter-head">
+    <div class="kicker">Chapter XXXIX</div>
+    <h1>Syntax</h1>
+    <div class="sub" data-en="The rules governing how words correctly combine in a sentence — beginning with subject–verb agreement." data-bn="বাক্যে শব্দসমূহ কীভাবে সঠিকভাবে সাজাতে হয় তার নিয়ম — শুরু হচ্ছে Subject–Verb Agreement দিয়ে।"></div>
+  </div>
+  <div class="article" data-art="451">
+    <h3 data-en="Subject–Verb Agreement" data-bn="Subject–Verb Agreement"></h3>
+    <div class="rule">
+      <span data-en="A verb must agree with its subject in number and person." data-bn=""></span>
+      <div class="bn">একটি Verb-কে তার Subject-এর Number ও Person অনুযায়ী মিলতে হবে।</div>
+    </div>
+    <ul class="examples">
+      <li>I <code>am</code> happy.</li>
+      <li>They <code>were</code> happy.</li>
+      <li>All <code>is</code> well.</li>
+    </ul>
+    <div class="note"><strong>Common pitfall —</strong> the verb is sometimes wrongly made to agree with the predicate noun instead of the true subject.</div>
+  </div>
+</section>
+
+<!-- ============================================================ QUESTION BANK ============================================================ -->
+<section id="qbank" class="chapter">
+  <div class="chapter-head">
+    <div class="kicker" data-en="Exercises 52 – 64" data-bn="অনুশীলনী ৫২ – ৬৪"></div>
+    <h1 data-en="Question Bank" data-bn="প্রশ্নভাণ্ডার"></h1>
+    <div class="sub" data-en="Every exercise from the book, grouped by topic. Tap a topic to open its questions." data-bn="বইয়ের প্রতিটি অনুশীলনী বিষয়ভিত্তিক ভাগে সাজানো। বিষয়ে ট্যাপ করে প্রশ্নগুলো দেখুন।"></div>
+  </div>
+  <div class="qb-toc" id="qbToc"></div>
+  <div id="qbContainer"></div>
+</section>
+
+</main>
+
+<button id="toTop" aria-label="Back to top">↑</button>
+<footer class="pagefoot">A Text-Book of Higher English Grammar · Chapters XXXIII–XXXIX</footer>
+</div>
+
+<script>
+/* ---------------- language toggle ---------------- */
+const app = document.getElementById('app');
+const langBtn = document.getElementById('langToggle');
+function applyLang(lang){
+  app.setAttribute('data-lang', lang);
+  document.querySelectorAll('[data-en]').forEach(el=>{
+    const en = el.getAttribute('data-en'), bn = el.getAttribute('data-bn');
+    if(en === null && bn === null) return;
+    if(el.classList.contains('bn') || el.tagName==='SMALL' || el.tagName==='SPAN' || el.tagName==='DIV'){
+      const text = lang==='bn' ? (bn||en) : en;
+      if(text) el.textContent = text;
+    }
+  });
+  langBtn.textContent = lang==='bn' ? 'English' : 'বাংলা';
+  langBtn.classList.toggle('bn', lang==='bn');
+}
+let currentLang = 'en';
+langBtn.addEventListener('click', ()=>{
+  currentLang = currentLang==='en' ? 'bn' : 'en';
+  applyLang(currentLang);
+});
+applyLang('en');
+
+/* ---------------- chapter tab navigation ---------------- */
+const navButtons = document.querySelectorAll('nav.chapters button');
+const chapterSections = document.querySelectorAll('main > .chapter');
+navButtons.forEach(btn=>{
+  btn.addEventListener('click', ()=>{
+    navButtons.forEach(b=>b.classList.remove('active'));
+    btn.classList.add('active');
+    chapterSections.forEach(s=>s.classList.remove('active'));
+    document.getElementById(btn.dataset.target).classList.add('active');
+    window.scrollTo({top:0, behavior:'smooth'});
+  });
+});
+
+/* ---------------- back to top ---------------- */
+const toTop = document.getElementById('toTop');
+window.addEventListener('scroll', ()=>{ toTop.classList.toggle('show', window.scrollY>400); });
+toTop.addEventListener('click', ()=>window.scrollTo({top:0,behavior:'smooth'}));
+
+/* ================================================================
+   QUESTION BANK DATA
+   Each exercise-group holds one or more "parts" (a, b, c ...),
+   each with its own topic label and item list — a separate
+   question bank per topic, as requested.
+================================================================ */
+const exerciseGroups = [{"id": "ex52", "label": "Exercise 52", "chapter": "Ch. XXXIII — Phrases", "chapterBn": "অধ্যায় ৩৩ — বাক্যাংশ", "parts": [{"label": "(a) Noun Phrases", "labelBn": "বিশেষ্য বাক্যাংশ", "instr": "Pick out the Noun Phrases in the following:", "explainBn": "যে Phrase বাক্যে Noun-এর কাজ করে (Subject/Object/Complement হিসেবে), সেটিই Noun Phrase.", "items": [{"q": "To err is human; to forgive, divine.", "a": "Noun Phrases: \"To err\" (subject of \"is human\"); \"to forgive\" (subject of \"(is) divine\", verb understood)."}, {"q": "I like to read.", "a": "Noun Phrase: \"to read\" — object of the verb \"like\"."}, {"q": "He enjoys playing football.", "a": "Noun Phrase: \"playing football\" — Gerund phrase, object of \"enjoys\"."}, {"q": "I want to do the work.", "a": "Noun Phrase: \"to do the work\" — object of \"want\"."}, {"q": "Running so fast is very creditable.", "a": "Noun Phrase: \"Running so fast\" — subject of \"is\"."}, {"q": "To do that was risky.", "a": "Noun Phrase: \"To do that\" — subject of \"was\"."}, {"q": "He tried to oppose me.", "a": "Noun Phrase: \"to oppose me\" — object of \"tried\"."}, {"q": "He was accused of having committed a theft.", "a": "Noun Phrase: \"having committed a theft\" — Gerund phrase, object of preposition \"of\"."}, {"q": "Children are fond of playing games.", "a": "Noun Phrase: \"playing games\" — object of preposition \"of\"."}, {"q": "Walking in the sun is sometimes injurious to health.", "a": "Noun Phrase: \"Walking in the sun\" — subject of \"is\"."}, {"q": "I promise to go there.", "a": "Noun Phrase: \"to go there\" — object of \"promise\"."}, {"q": "He loves walking alone by the sea-side.", "a": "Noun Phrase: \"walking alone by the sea-side\" — object of \"loves\"."}]}, {"label": "(b) Adjective Phrases", "labelBn": "বিশেষণ বাক্যাংশ", "instr": "Pick out the Adjective Phrases in the following:", "explainBn": "যে Phrase কোনো Noun/Pronoun-কে বিশেষিত করে, সেটিই Adjective Phrase.", "items": [{"q": "A man of sense can never do so.", "a": "Adjective Phrase: \"of sense\" — qualifies \"man\" (= a sensible man)."}, {"q": "He gave me a cow of white colour.", "a": "Adjective Phrase: \"of white colour\" — qualifies \"cow\" (= a white cow)."}, {"q": "The book on the table is mine.", "a": "Adjective Phrase: \"on the table\" — qualifies \"book\"."}, {"q": "It is a chain of gold.", "a": "Adjective Phrase: \"of gold\" — qualifies \"chain\" (= a golden chain)."}, {"q": "A boy, neglectful of his duties, can never shine in life.", "a": "Adjective Phrase: \"neglectful of his duties\" — qualifies \"boy\"."}, {"q": "Careless of dangers, he proceeded on his way.", "a": "Adjective Phrase: \"Careless of dangers\" — qualifies \"he\"."}, {"q": "He lived in a house built of stone.", "a": "Adjective Phrase: \"built of stone\" — qualifies \"house\"."}, {"q": "A friend in need is a friend indeed.", "a": "Adjective Phrase: \"in need\" — qualifies \"friend\"."}, {"q": "He is a boy devoid of common sense.", "a": "Adjective Phrase: \"devoid of common sense\" — qualifies \"boy\"."}, {"q": "This is a watch made in Switzerland.", "a": "Adjective Phrase: \"made in Switzerland\" — qualifies \"watch\" (= a Swiss watch)."}, {"q": "I want the advice of a medical man.", "a": "Adjective Phrase: \"of a medical man\" — qualifies \"advice\" (= medical advice)."}]}, {"label": "(c) Adjective Phrases for Adjectives", "labelBn": "Adjective-এর পরিবর্তে Phrase", "instr": "Substitute Adjective Phrases for the italicised Adjectives:", "explainBn": "একটি Adjective-কে তার সমার্থক Phrase দিয়ে প্রতিস্থাপন করা হয়েছে, অর্থ একই রেখে.", "items": [{"q": "He has gone to a distant place.", "a": "He has gone to a place far away. (distant → far away)"}, {"q": "I have brought a black cow.", "a": "I have brought a cow of black colour. (black → of black colour)"}, {"q": "I bore every thing with a smiling face.", "a": "I bore every thing with a face full of smiles. (smiling → full of smiles)"}, {"q": "He gave me a gold chain.", "a": "He gave me a chain of gold. (gold → of gold)"}, {"q": "The front door was open.", "a": "The door at the front was open. (front → at the front)"}, {"q": "It is a fearful sight.", "a": "It is a sight full of fear. (fearful → full of fear)"}, {"q": "He reads in the village school.", "a": "He reads in the school of the village. (village → of the village)"}, {"q": "The mountain scenery charmed us all.", "a": "The scenery of the mountains charmed us all. (mountain → of the mountains)"}, {"q": "He lives an aimless life.", "a": "He lives a life without any aim. (aimless → without any aim)"}, {"q": "White clouds are floating in the sky.", "a": "Clouds of white colour are floating in the sky. (white → of white colour)"}, {"q": "He is quite friendless here.", "a": "He is quite without a friend here. (friendless → without a friend)"}]}, {"label": "(d) Adjectives for Adjective Phrases", "labelBn": "Phrase-এর পরিবর্তে Adjective", "instr": "Substitute Adjectives for the italicised Adjective Phrases:", "explainBn": "একটি Adjective Phrase-কে তার সমার্থক একক Adjective দিয়ে সংক্ষিপ্ত করা হয়েছে.", "items": [{"q": "I want a boy capable of hard work.", "a": "I want a hard-working boy. (capable of hard work → hard-working)"}, {"q": "The wall raised long ago fell down.", "a": "The old wall fell down. (raised long ago → old)"}, {"q": "He has gone to the church in the village.", "a": "He has gone to the village church. (in the village → village)"}, {"q": "Look at the sun about to set.", "a": "Look at the setting sun. (about to set → setting)"}, {"q": "He is a man of great promise.", "a": "He is a promising man. (of great promise → promising)"}, {"q": "I want a pencil of Indian make.", "a": "I want an Indian pencil. (of Indian make → Indian)"}, {"q": "The house built of marble was destroyed by the earthquake.", "a": "The marble house was destroyed by the earthquake. (built of marble → marble)"}, {"q": "He led a life without any blame.", "a": "He led a blameless life. (without any blame → blameless)"}, {"q": "It was the deed of a coward.", "a": "It was a cowardly deed. (of a coward → cowardly)"}]}, {"label": "(e) Adverbial Phrases", "labelBn": "ক্রিয়া-বিশেষণ বাক্যাংশ", "instr": "Pick out the Adverbial Phrases in the following:", "explainBn": "যে Phrase ক্রিয়াপদকে (verb) কীভাবে/কখন/কোথায় বিশেষিত করে, সেটিই Adverbial Phrase.", "items": [{"q": "I stopped in front of his house.", "a": "Adverbial Phrase: \"in front of his house\" — qualifies \"stopped\"."}, {"q": "They came many years ago.", "a": "Adverbial Phrase: \"many years ago\" — qualifies \"came\"."}, {"q": "He did the work in a clever way.", "a": "Adverbial Phrase: \"in a clever way\" — qualifies \"did\"."}, {"q": "We tried with all our strength.", "a": "Adverbial Phrase: \"with all our strength\" — qualifies \"tried\"."}, {"q": "They ran at a great speed.", "a": "Adverbial Phrase: \"at a great speed\" — qualifies \"ran\"."}, {"q": "He does his work without any care.", "a": "Adverbial Phrase: \"without any care\" — qualifies \"does\"."}, {"q": "Please send me a reply at an early date.", "a": "Adverbial Phrase: \"at an early date\" — qualifies \"send\"."}, {"q": "He went to the river-side.", "a": "Adverbial Phrase: \"to the river-side\" — qualifies \"went\"."}, {"q": "I have been here for a long time.", "a": "Adverbial Phrase: \"for a long time\" — qualifies \"have been\"."}, {"q": "He died at this place.", "a": "Adverbial Phrase: \"at this place\" — qualifies \"died\"."}, {"q": "Come into the room.", "a": "Adverbial Phrase: \"into the room\" — qualifies \"Come\"."}, {"q": "I shall do it at any cost.", "a": "Adverbial Phrase: \"at any cost\" — qualifies \"shall do\"."}, {"q": "He rested under a tree for some time.", "a": "Adverbial Phrases: \"under a tree\", \"for some time\" — qualify \"rested\"."}]}, {"label": "(f) Phrases for Adverbs", "labelBn": "Adverb-এর পরিবর্তে Phrase", "instr": "Substitute Phrases for the italicised adverbs:", "explainBn": "একটি Adverb-কে তার সমার্থক Phrase দিয়ে প্রতিস্থাপন করা হয়েছে.", "items": [{"q": "He was there.", "a": "He was at that place. (there → at that place)"}, {"q": "I want a reply soon.", "a": "I want a reply at an early date. (soon → at an early date)"}, {"q": "They marched westward.", "a": "They marched towards the west. (westward → towards the west)"}, {"q": "He is now asleep.", "a": "He is at this moment asleep. (now → at this moment)"}, {"q": "Do the work carefully.", "a": "Do the work with care. (carefully → with care)"}, {"q": "I shall shortly go there.", "a": "I shall go there before long. (shortly → before long)"}, {"q": "He shouted aloud.", "a": "He shouted in a loud voice. (aloud → in a loud voice)"}, {"q": "Speak gently.", "a": "Speak in a gentle manner. (gently → in a gentle manner)"}, {"q": "God is everywhere.", "a": "God is in all places. (everywhere → in all places)"}, {"q": "He came late.", "a": "He came at a late hour. (late → at a late hour)"}, {"q": "He acted prudently.", "a": "He acted with prudence. (prudently → with prudence)"}, {"q": "He's always late.", "a": "He is late at all times. (always → at all times)"}, {"q": "He did it hurriedly.", "a": "He did it in a hurry. (hurriedly → in a hurry)"}]}, {"label": "(g) Adverbs for Adverbial Phrases", "labelBn": "Phrase-এর পরিবর্তে Adverb", "instr": "Substitute Adverbs for the italicised Adverbial Phrases:", "explainBn": "একটি Adverbial Phrase-কে তার সমার্থক একক Adverb দিয়ে সংক্ষিপ্ত করা হয়েছে.", "items": [{"q": "He saw me at that place.", "a": "He saw me there. (at that place → there)"}, {"q": "I welcome you with all my heart.", "a": "I welcome you heartily. (with all my heart → heartily)"}, {"q": "He did the work with great care.", "a": "He did the work carefully. (with great care → carefully)"}, {"q": "He failed through ill luck.", "a": "He failed unluckily. (through ill luck → unluckily)"}, {"q": "I shall meet you at this place.", "a": "I shall meet you here. (at this place → here)"}, {"q": "At what time may I expect you?", "a": "When may I expect you? (At what time → When)"}, {"q": "He spoke in a rude tone.", "a": "He spoke rudely. (in a rude tone → rudely)"}, {"q": "They went to the south.", "a": "They went southward. (to the south → southward)"}, {"q": "Tell me in brief what you want.", "a": "Tell me briefly what you want. (in brief → briefly)"}, {"q": "He will come before long.", "a": "He will come soon. (before long → soon)"}, {"q": "He spoke in a rough manner.", "a": "He spoke roughly. (in a rough manner → roughly)"}]}, {"label": "(h) Prepositional Phrases", "labelBn": "সম্বন্ধসূচক বাক্যাংশ", "instr": "Pick out the Prepositional Phrases in the following:", "explainBn": "একাধিক শব্দ মিলে যখন একটি Preposition-এর কাজ করে, তখন তাকে Prepositional Phrase বলে.", "items": [{"q": "He couldn't come on account of illness.", "a": "Prepositional Phrase: \"on account of\" (= because of)."}, {"q": "I say this by way of example.", "a": "Prepositional Phrase: \"by way of\" (= as an example)."}, {"q": "I did it in accordance with your order.", "a": "Prepositional Phrase: \"in accordance with\" (= according to)."}, {"q": "I know nothing in connection with that case.", "a": "Prepositional Phrase: \"in connection with\" (= about)."}, {"q": "He is inferior to me in point of strength.", "a": "Prepositional Phrase: \"in point of\" (= regarding)."}, {"q": "He is at the point of death.", "a": "Prepositional Phrase: \"at the point of\" (= about to)."}, {"q": "They were on the point of starting when you came.", "a": "Prepositional Phrase: \"on the point of\" (= about to)."}, {"q": "I did my best for the sake of my friend.", "a": "Prepositional Phrase: \"for the sake of\" (= for)."}]}, {"label": "(i) Mixed Phrases — classify", "labelBn": "মিশ্র বাক্যাংশ — শ্রেণিবিভাগ", "instr": "Pick out the various phrases in the following and state to which class they belong:", "explainBn": "প্রতিটি Phrase-কে তার কাজ (Noun/Adjective/Adverb) অনুযায়ী চিহ্নিত করা হয়েছে.", "items": [{"q": "I met him on the way.", "a": "Adverbial Phrase: \"on the way\" — qualifies \"met\"."}, {"q": "They did it in a careless manner.", "a": "Adverbial Phrase: \"in a careless manner\" — qualifies \"did\"."}, {"q": "I knew the name of the boy.", "a": "Adjective Phrase: \"of the boy\" — qualifies \"name\"."}, {"q": "There is a tree in front of my house.", "a": "Adjective Phrase: \"in front of my house\" — qualifies \"tree\"."}, {"q": "I sat by his side.", "a": "Adverbial Phrase: \"by his side\" — qualifies \"sat\"."}, {"q": "I know the time of his arrival.", "a": "Adjective Phrase: \"of his arrival\" — qualifies \"time\"."}, {"q": "Before going there, you must finish the work.", "a": "Adverbial Phrase (Gerundial): \"Before going there\" — qualifies \"must finish\"."}, {"q": "He gave me the book belonging to you.", "a": "Adjective Phrase: \"belonging to you\" — qualifies \"book\"."}, {"q": "I was at home at the time, but went away shortly after.", "a": "Adverbial Phrases: \"at home\", \"at the time\", \"shortly after\"."}, {"q": "Angry at my opposition, he left the place.", "a": "Adjective Phrase: \"Angry at my opposition\" — qualifies \"he\"."}, {"q": "He lived a life of purity and simplicity.", "a": "Adjective Phrase: \"of purity and simplicity\" — qualifies \"life\"."}, {"q": "The news of his death reached there at last.", "a": "Adjective Phrase: \"of his death\" — qualifies \"news\"; Adverbial Phrase: \"at last\" — qualifies \"reached\"."}, {"q": "What does the boy in the street shout about?", "a": "Adjective Phrase: \"in the street\" — qualifies \"boy\"."}, {"q": "They did the work in a careless manner.", "a": "Adverbial Phrase: \"in a careless manner\" — qualifies \"did\"."}, {"q": "He was absent on account of his son's illness.", "a": "Adverbial Phrase: \"on account of his son's illness\" — qualifies \"was absent\"."}, {"q": "He left the room in a fit of anger.", "a": "Adverbial Phrase: \"in a fit of anger\" — qualifies \"left\"."}]}]}, {"id": "ex53", "label": "Exercise 53", "chapter": "Ch. XXXIV — Noun Clauses", "chapterBn": "অধ্যায় ৩৪ — Noun Clause", "parts": [{"label": "(a) Identify &amp; parse Noun Clauses", "labelBn": "Noun Clause চিহ্নিত করো", "instr": "Pick out the Noun Clauses from the following and parse them:", "explainBn": "Noun Clause সাধারণত that/what/why/when/if দিয়ে শুরু হয় এবং Subject, Object, Complement বা Apposition হিসেবে কাজ করে.", "items": [{"q": "I know that you are right.", "a": "Noun Clause: \"that you are right\" — object of \"know\"."}, {"q": "I heard what he had said.", "a": "Noun Clause: \"what he had said\" — object of \"heard\"."}, {"q": "When he will go is not known.", "a": "Noun Clause: \"When he will go\" — subject of \"is not known\"."}, {"q": "It is clear that he did it.", "a": "Noun Clause: \"that he did it\" — in apposition to \"it\" (real subject)."}, {"q": "I know where he lives and what he does.", "a": "Noun Clauses: \"where he lives\", \"what he does\" — both objects of \"know\", joined by \"and\"."}, {"q": "There is a rumour that he will return soon.", "a": "Noun Clause: \"that he will return soon\" — in apposition to \"rumour\"."}, {"q": "Why he said so is a mystery.", "a": "Noun Clause: \"Why he said so\" — subject of \"is\"."}, {"q": "Can you say when he will come?", "a": "Noun Clause: \"when he will come\" — object of \"say\"."}, {"q": "That he is intelligent is admitted by all.", "a": "Noun Clause: \"That he is intelligent\" — subject of \"is admitted\"."}, {"q": "It is said that he will resign.", "a": "Noun Clause: \"that he will resign\" — in apposition to \"it\" (real subject)."}, {"q": "I know nothing about what he will do.", "a": "Noun Clause: \"what he will do\" — object of preposition \"about\"."}, {"q": "The girl asked me if I had seen her father.", "a": "Noun Clause: \"if I had seen her father\" — object of \"asked\"."}, {"q": "They promised that they would try.", "a": "Noun Clause: \"that they would try\" — object of \"promised\"."}, {"q": "I asked him if he knew when the examination would commence.", "a": "Noun Clause: \"if he knew when the examination would commence\" — object of \"asked\" (containing a further Noun Clause \"when the examination would commence\", object of \"knew\")."}, {"q": "It is known that he is a rogue.", "a": "Noun Clause: \"that he is a rogue\" — in apposition to \"it\" (real subject)."}]}, {"label": "(b) Nouns/Phrases for Noun Clauses", "labelBn": "Clause-এর পরিবর্তে Noun/Phrase", "instr": "Substitute Nouns or Phrases for the Noun Clauses:", "explainBn": "একটি Noun Clause-কে সংক্ষিপ্ত করে একটি Noun বা Phrase দিয়ে প্রতিস্থাপন করা হয়েছে.", "items": [{"q": "I know where he was born.", "a": "I know his birthplace."}, {"q": "We have heard that he is ill.", "a": "We have heard of his illness."}, {"q": "The report that he is dead is false.", "a": "The report of his death is false."}, {"q": "Everything depends on how he behaves.", "a": "Everything depends on his behaviour."}, {"q": "I noticed that you were absent.", "a": "I noticed your absence."}, {"q": "I wish that you would succeed.", "a": "I wish you success."}, {"q": "I doubt if he can do it.", "a": "I doubt his ability to do it."}, {"q": "When he will go is uncertain.", "a": "The time of his going is uncertain."}, {"q": "I resent that you are so rough.", "a": "I resent your roughness."}, {"q": "The jury declared that the prisoner was innocent.", "a": "The jury declared the prisoner's innocence."}]}, {"label": "(c) Noun Clauses for phrases", "labelBn": "Phrase-এর পরিবর্তে Noun Clause", "instr": "Substitute Noun Clauses for the italicised portions:", "explainBn": "একটি Phrase-কে বিস্তৃত করে একটি সম্পূর্ণ Noun Clause-এ রূপান্তর করা হয়েছে.", "items": [{"q": "I admit my fault.", "a": "I admit that I am at fault."}, {"q": "This is his birth-place.", "a": "This is where he was born."}, {"q": "The time of his arrival is not known.", "a": "When he will arrive is not known."}, {"q": "We have heard of his success.", "a": "We have heard that he has succeeded."}, {"q": "There is no truth in your statement.", "a": "There is no truth in what you say."}, {"q": "The teacher noted your absence.", "a": "The teacher noted that you were absent."}, {"q": "I wish you long life.", "a": "I wish that you may live long."}, {"q": "You must listen to my speech.", "a": "You must listen to what I say."}, {"q": "I hope to succeed.", "a": "I hope that I shall succeed."}, {"q": "I know him to be guilty.", "a": "I know that he is guilty."}, {"q": "He told me the manner of his escape.", "a": "He told me how he escaped."}, {"q": "There is no truth in the report of his death.", "a": "There is no truth in the report that he is dead."}, {"q": "I assure you of my help.", "a": "I assure you that I shall help you."}]}]}, {"id": "ex54", "label": "Exercise 54", "chapter": "Ch. XXXIV — Adjective Clauses", "chapterBn": "অধ্যায় ৩৪ — Adjective Clause", "parts": [{"label": "(a) Identify &amp; parse Adjective Clauses", "labelBn": "Adjective Clause চিহ্নিত করো", "instr": "Pick out the Adjective Clauses and parse them:", "explainBn": "Adjective Clause সাধারণত who/which/that/when/where দিয়ে শুরু হয় এবং একটি Noun বা Pronoun-কে বিশেষিত করে.", "items": [{"q": "The book that you gave me is lost.", "a": "Adjective Clause: \"that you gave me\" — qualifies \"book\"."}, {"q": "I know the day when he will come.", "a": "Adjective Clause: \"when he will come\" — qualifies \"day\"."}, {"q": "Do not mention the time when you saw me.", "a": "Adjective Clause: \"when you saw me\" — qualifies \"time\"."}, {"q": "The girls you saw are my sisters.", "a": "Adjective Clause: \"(whom) you saw\" — qualifies \"girls\"."}, {"q": "This is the house I bought.", "a": "Adjective Clause: \"(which) I bought\" — qualifies \"house\"."}, {"q": "He is the best boy that I have ever seen.", "a": "Adjective Clause: \"that I have ever seen\" — qualifies \"boy\"."}, {"q": "I want such a pen as will write well.", "a": "Adjective Clause: \"as will write well\" — qualifies \"pen\"."}, {"q": "This is the same book as that.", "a": "Adjective Clause: \"as that (is)\" — qualifies \"book\"."}, {"q": "I have lost the watch I bought the other day.", "a": "Adjective Clause: \"(which) I bought the other day\" — qualifies \"watch\"."}, {"q": "Only such boys are wanted as can speak fluently.", "a": "Adjective Clause: \"as can speak fluently\" — qualifies \"boys\"."}, {"q": "This is the story you told me.", "a": "Adjective Clause: \"(that) you told me\" — qualifies \"story\"."}]}, {"label": "(b) Adjective/Phrase for Adjective Clause", "labelBn": "Clause-এর পরিবর্তে Adjective/Phrase", "instr": "Substitute Adjective or Adjective Phrases for Adjective Clauses:", "explainBn": "একটি Adjective Clause-কে সংক্ষিপ্ত করে Adjective বা Phrase দিয়ে প্রতিস্থাপন করা হয়েছে.", "items": [{"q": "I know the place where he was born.", "a": "I know his birthplace."}, {"q": "Everybody loves a boy who speaks the truth.", "a": "Everybody loves a truthful boy."}, {"q": "I know the time when he will arrive.", "a": "I know his time of arrival."}, {"q": "The tree that stood in front of my house has been blown down.", "a": "The tree in front of my house has been blown down."}, {"q": "I want a pen that is made in India.", "a": "I want an Indian-made pen."}, {"q": "A servant who is faithful always serves his master.", "a": "A faithful servant always serves his master."}, {"q": "The boys that will succeed will get prizes.", "a": "The successful boys will get prizes."}, {"q": "Uneasy lies the head that wears a crown.", "a": "Uneasy lies the crowned head."}, {"q": "The reason why he failed is known.", "a": "The reason for his failure is known."}]}, {"label": "(c) Adjective Clause for Adjective/Phrase", "labelBn": "Adjective/Phrase-এর পরিবর্তে Clause", "instr": "Substitute Adjective Clauses for Adjectives or Adjective Phrases:", "explainBn": "একটি Adjective/Phrase-কে বিস্তৃত করে সম্পূর্ণ Adjective Clause-এ রূপান্তর করা হয়েছে.", "items": [{"q": "The boy sitting by me is my brother.", "a": "The boy who is sitting by me is my brother."}, {"q": "Only a boy of perseverance will succeed.", "a": "Only a boy who has perseverance will succeed."}, {"q": "Water to drink should be pure.", "a": "Water that is meant for drinking should be pure."}, {"q": "No hardened person was allowed to enter.", "a": "No person who was hardened was allowed to enter."}, {"q": "Give me a pair of clothes made in India.", "a": "Give me a pair of clothes that was made in India."}, {"q": "I have been to his place of residence.", "a": "I have been to the place where he resides."}, {"q": "The men in the room rushed out.", "a": "The men who were in the room rushed out."}, {"q": "He informed us of the date of his arrival.", "a": "He informed us of the date when he would arrive."}, {"q": "I know the path leading to his house.", "a": "I know the path that leads to his house."}, {"q": "They accepted the proposal put forward.", "a": "They accepted the proposal that was put forward."}, {"q": "He loves his native village.", "a": "He loves the village where he was born."}]}, {"label": "(d) Restrictive or Continuative?", "labelBn": "সীমাবদ্ধকারী নাকি বর্ণনামূলক?", "instr": "State whether the clauses introduced by \"who\", \"which\", \"when\", \"where\" are restrictive or continuative:", "explainBn": "Antecedent-কে নির্দিষ্ট করলে Clause-টি Restrictive (Subordinate Adjective); অতিরিক্ত তথ্য যোগ করলে তা Continuative (Co-ordinate).", "items": [{"q": "I have seen the boy who stood first in the examination.", "a": "Restrictive — defines exactly which boy."}, {"q": "My brother, who has seen you, will pardon you.", "a": "Continuative (= \"and he\") — \"my brother\" is already identified; extra information is added."}, {"q": "The place where he was born has been washed away by the Padma.", "a": "Restrictive — defines which place."}, {"q": "This is Calcutta where he was born.", "a": "Continuative (= \"and there\") — Calcutta is already named."}, {"q": "He failed, which is a mystery.", "a": "Continuative (= \"and this\") — comments on the whole preceding statement."}, {"q": "I bought the horse which had won the race.", "a": "Restrictive — defines which horse."}, {"q": "I have bought a horse which will win the race.", "a": "Restrictive — defines which horse (a future, defining quality)."}, {"q": "The girl lived in Dacca, where she was a student.", "a": "Continuative (= \"and there\") — Dacca already named."}, {"q": "The girl went to the village where she had been a student.", "a": "Restrictive — defines which village."}, {"q": "The girl lives at her native village where she is a student.", "a": "Restrictive — further defines 'her native village'."}, {"q": "I went to the boy, who promised to help me.", "a": "Continuative (= \"and he\") — comma signals extra information."}, {"q": "I went to the boy who had promised to help me.", "a": "Restrictive — defines which boy."}, {"q": "I know your brother who is a pleader.", "a": "Continuative — 'your brother' is already identified by relation."}]}]}, {"id": "ex55", "label": "Exercise 55", "chapter": "Ch. XXXIV — Adverbial Clauses", "chapterBn": "অধ্যায় ৩৪ — Adverbial Clause", "parts": [{"label": "(a) Identify &amp; parse Adverbial Clauses", "labelBn": "Adverbial Clause চিহ্নিত করো", "instr": "Pick out the Adverbial Clauses and parse them:", "explainBn": "Adverbial Clause ক্রিয়াপদকে বিশেষিত করে এবং সময়, স্থান, কারণ, শর্ত, উদ্দেশ্য ইত্যাদি বোঝায়.", "items": [{"q": "Wait until I return.", "a": "Adverbial Clause of Time: \"until I return\" — qualifies \"Wait\"."}, {"q": "Stay where you are.", "a": "Adverbial Clause of Place: \"where you are\" — qualifies \"Stay\"."}, {"q": "As he is ill, he cannot come.", "a": "Adverbial Clause of Reason: \"As he is ill\" — qualifies \"cannot come\"."}, {"q": "He worked hard that he might win the prize.", "a": "Adverbial Clause of Purpose: \"that he might win the prize\" — qualifies \"worked\"."}, {"q": "If you sit idle, you cannot prosper.", "a": "Adverbial Clause of Condition: \"If you sit idle\" — qualifies \"cannot prosper\"."}, {"q": "I shall go whatever may happen.", "a": "Adverbial Clause of Concession: \"whatever may happen\" — qualifies \"shall go\"."}, {"q": "Do as I tell you.", "a": "Adverbial Clause of Manner: \"as I tell you\" — qualifies \"Do\"."}, {"q": "He spoke so loud that he could be heard by everybody.", "a": "Adverbial Clause of Result: \"that he could be heard by everybody\" — qualifies \"so loud\"."}, {"q": "Though he is weak, he will try.", "a": "Adverbial Clause of Concession: \"Though he is weak\" — qualifies \"will try\"."}, {"q": "I shall help him, whether you like it or not.", "a": "Adverbial Clause of Concession: \"whether you like it or not\" — qualifies \"shall help\"."}, {"q": "However rich you may be, I am not afraid of you.", "a": "Adverbial Clause of Concession: \"However rich you may be\" — qualifies \"am not afraid\"."}, {"q": "I am grieved that you do this.", "a": "Adverbial Clause of Reason: \"that you do this\" — qualifies \"grieved\"."}, {"q": "You cannot succeed until you give up your bad habit.", "a": "Adverbial Clause of Time: \"until you give up your bad habit\" — qualifies \"cannot succeed\"."}, {"q": "He came when we were playing.", "a": "Adverbial Clause of Time: \"when we were playing\" — qualifies \"came\"."}, {"q": "Come as soon as you can.", "a": "Adverbial Clause of Time: \"as soon as you can\" — qualifies \"Come\"."}]}, {"label": "(b) Adverbs/Phrases for Adverbial Clauses", "labelBn": "Clause-এর পরিবর্তে Adverb/Phrase", "instr": "Substitute Adverbs or Adverbial Phrases for the Adverbial Clauses:", "explainBn": "একটি Adverbial Clause-কে সংক্ষিপ্ত করে Adverb বা Phrase দিয়ে প্রতিস্থাপন করা হয়েছে.", "items": [{"q": "He came here that he might see me.", "a": "He came here to see me."}, {"q": "I went there when it was evening.", "a": "I went there in the evening."}, {"q": "He came after I had left.", "a": "He came after my departure."}, {"q": "He was angry with me because I had disobeyed his orders.", "a": "He was angry with me on account of my disobedience."}, {"q": "He walked slowly lest he should fall.", "a": "He walked slowly for fear of falling."}, {"q": "As he is ill, he cannot go to school.", "a": "On account of his illness, he cannot go to school."}, {"q": "He punished me that I might be warned for the future.", "a": "He punished me for my future warning."}, {"q": "When I was a child, I often thought so.", "a": "In my childhood, I often thought so."}]}, {"label": "(c) Adverbial Clauses for Adverbial Phrases", "labelBn": "Phrase-এর পরিবর্তে Adverbial Clause", "instr": "Substitute Adverbial Clauses for the Adverbial Phrases:", "explainBn": "একটি Adverbial Phrase-কে বিস্তৃত করে সম্পূর্ণ Adverbial Clause-এ রূপান্তর করা হয়েছে.", "items": [{"q": "He cannot come on account of his mother's illness.", "a": "He cannot come because his mother is ill."}, {"q": "He did not speak for fear of displeasing you.", "a": "He did not speak lest he should displease you."}, {"q": "He succeeded by dint of perseverance.", "a": "He succeeded because he persevered."}, {"q": "He is too weak to walk.", "a": "He is so weak that he cannot walk."}, {"q": "I returned home in the evening.", "a": "I returned home when it was evening."}, {"q": "He acted according to instructions.", "a": "He acted as he was instructed."}, {"q": "He tried with all his might.", "a": "He tried as hard as he could."}, {"q": "He will arrive after your departure.", "a": "He will arrive after you have departed."}, {"q": "He was frightened to see the animal.", "a": "He was frightened when he saw the animal."}, {"q": "On his return he was given a rich reward.", "a": "When he returned, he was given a rich reward."}, {"q": "We shall start after dinner.", "a": "We shall start after we have dined."}, {"q": "I cannot do it without your help.", "a": "I cannot do it unless you help me."}, {"q": "In spite of his opposition, I carried the point.", "a": "Though he opposed me, I carried the point."}]}]}, {"id": "ex56", "label": "Exercise 56", "chapter": "Ch. XXXIV — Phrases &amp; Clauses (mixed)", "chapterBn": "অধ্যায় ৩৪ — মিশ্র (Phrase ও Clause)", "parts": [{"label": "(a) Discussion", "labelBn": "আলোচনা", "instr": "Distinguish between a Phrase and a Clause.", "explainBn": "Phrase-এর নিজস্ব Subject-Verb থাকে না; Clause-এর থাকে। উভয়ই একটি বড় বাক্যের অংশ হতে পারে.", "items": [{"q": "Distinguish between a Phrase and a Clause, with examples of each.", "a": "A Phrase (e.g. \"in front of the house\") has no subject or finite verb of its own and does the work of a single part of speech. A Clause (e.g. \"when he came\") has its own subject and finite verb, but is still only part of a bigger sentence."}]}, {"label": "(b) Classify Phrases &amp; Clauses", "labelBn": "শ্রেণিবিভাগ করো", "instr": "Pick out the Phrases and Clauses from the following and state to which classes they belong:", "explainBn": "প্রতিটি অংশকে প্রথমে Phrase নাকি Clause তা ঠিক করে, তারপর তার শ্রেণি (Noun/Adjective/Adverbial) নির্ণয় করা হয়েছে.", "items": [{"q": "I hear that my father is ill.", "a": "Noun Clause: \"that my father is ill\" — object of \"hear\"."}, {"q": "He could not pass on account of illness.", "a": "Adverbial Phrase: \"on account of illness\" — qualifies \"could not pass\"."}, {"q": "The teacher was displeased with the boy who could not say his lessons.", "a": "Adjective Clause: \"who could not say his lessons\" — qualifies \"boy\"."}, {"q": "The other day, when I was on my way to the station, I met a lame man lying on the road.", "a": "Adverbial Phrase: \"The other day\" — qualifies \"met\"; Adverbial Clause of Time: \"when I was on my way to the station\" — qualifies \"met\"; Adjective Phrase: \"lying on the road\" — qualifies \"man\"."}, {"q": "There is a tree in front of my house.", "a": "Adjective Phrase: \"in front of my house\" — qualifies \"tree\"."}, {"q": "He is so much pleased that he has promised a donation.", "a": "Adverbial Clause of Result: \"that he has promised a donation\" — qualifies \"so much\"."}, {"q": "In course of conversation he told me that he knew me to be a good man.", "a": "Adverbial Phrase: \"In course of conversation\" — qualifies \"told\"; Noun Clause: \"that he knew me to be a good man\" — object of \"told\"."}, {"q": "That was exactly what was expected.", "a": "Noun Clause: \"what was expected\" — complement to \"was\"."}, {"q": "Where he lives is not known.", "a": "Noun Clause: \"Where he lives\" — subject of \"is not known\"."}, {"q": "I know what he wants.", "a": "Noun Clause: \"what he wants\" — object of \"know\"."}, {"q": "Stay where you are if you would escape danger.", "a": "Adverbial Clause of Place: \"where you are\" — qualifies \"Stay\"; Adverbial Clause of Condition: \"if you would escape danger\" — qualifies \"Stay\"."}, {"q": "I have not heard from him since he left the place.", "a": "Adverbial Clause of Time: \"since he left the place\" — qualifies \"have not heard\"."}, {"q": "He did as he was asked to do.", "a": "Adverbial Clause of Manner: \"as he was asked to do\" — qualifies \"did\"."}]}, {"label": "(c) Substitute a clause, state class", "labelBn": "Clause বসাও, শ্রেণি বলো", "instr": "Substitute a clause for the italicised portion in each sentence, and state to what class it belongs:", "explainBn": "italicised অংশটিকে একটি সম্পূর্ণ Clause দিয়ে প্রতিস্থাপন করে তার শ্রেণি বলা হয়েছে.", "items": [{"q": "I shall not move out till sun-set.", "a": "I shall not move out till the sun sets. (Adverbial Clause of Time)"}, {"q": "He has heard of your success.", "a": "He has heard that you have succeeded. (Noun Clause)"}, {"q": "I am surprised at your failure.", "a": "I am surprised that you have failed. (Noun Clause)"}, {"q": "The tree in front of the house has been blown down.", "a": "The tree that stood in front of the house has been blown down. (Adjective Clause)"}, {"q": "I am hopeful of his recovery.", "a": "I am hopeful that he will recover. (Noun Clause)"}, {"q": "He levelled his gun at the birds flying overhead.", "a": "He levelled his gun at the birds that were flying overhead. (Adjective Clause)"}, {"q": "Everybody loves a dutiful boy.", "a": "Everybody loves a boy who is dutiful. (Adjective Clause)"}, {"q": "His failure took us by surprise.", "a": "That he failed took us by surprise. (Noun Clause)"}, {"q": "I know his movement.", "a": "I know where he moves. (Noun Clause)"}, {"q": "You cannot win the reward without my help.", "a": "You cannot win the reward unless I help you. (Adverbial Clause of Condition)"}, {"q": "This is my birth-place.", "a": "This is where I was born. (Noun Clause, Complement)"}, {"q": "His innocence was clearly proved.", "a": "That he was innocent was clearly proved. (Noun Clause)"}, {"q": "He left at day-break.", "a": "He left when the day broke. (Adverbial Clause of Time)"}, {"q": "He returned to his native place.", "a": "He returned to the place where he was born. (Adjective Clause)"}, {"q": "But for your help I would have been ruined.", "a": "If you had not helped me, I would have been ruined. (Adverbial Clause of Condition)"}, {"q": "I met him on my way to school.", "a": "I met him as I was going to school. (Adverbial Clause of Time)"}, {"q": "Tired by long walk, he rested under a tree.", "a": "As he was tired by long walk, he rested under a tree. (Adverbial Clause of Reason)"}, {"q": "The first boy will get a prize.", "a": "The boy who comes first will get a prize. (Adjective Clause)"}, {"q": "Water to drink must be pure.", "a": "Water that is meant for drinking must be pure. (Adjective Clause)"}, {"q": "I have heard about his arrival.", "a": "I have heard that he has arrived. (Noun Clause)"}]}]}, {"id": "ex57", "label": "Exercise 57", "chapter": "Ch. XXXV — Sentence Classification", "chapterBn": "অধ্যায় ৩৫ — বাক্যের শ্রেণিবিভাগ", "parts": [{"label": "Simple, Complex, or Compound?", "labelBn": "Simple, Complex নাকি Compound?", "instr": "State whether the following sentences are Simple, Complex or Compound; pick out the clauses and show their connection:", "explainBn": "Finite Verb-এর সংখ্যা ও Principal/Subordinate Clause-এর সম্পর্ক দেখে বাক্যের ধরন ঠিক করা হয়.", "items": [{"q": "I know that he will come.", "a": "Complex. (1) I know — Principal. (2) that he will come — Noun Clause, object of \"know\"."}, {"q": "When will you go home to see your brother?", "a": "Simple — one finite verb (\"will go\"); \"to see\" is an infinitive phrase, not a clause."}, {"q": "Seeing this, he burst into tears.", "a": "Simple — \"Seeing this\" is a participial phrase, not a clause; only one finite verb (\"burst\")."}, {"q": "They did not go there, but remained with me all the time.", "a": "Compound. (1) They did not go there — Principal. (2) (they) remained with me all the time — Principal, co-ordinate with (1) [but]."}, {"q": "There was a boy in our village who once saved a drowning girl.", "a": "Complex. (1) There was a boy in our village — Principal. (2) who once saved a drowning girl — Adjective Clause, qualifying \"boy\"."}, {"q": "When he will come is known to everybody.", "a": "Complex. (1) When he will come — Noun Clause, subject of \"is known\". (2) (that) is known to everybody — Principal."}, {"q": "I left the place after he had come.", "a": "Complex. (1) I left the place — Principal. (2) after he had come — Adverbial Clause of Time, qualifying \"left\"."}, {"q": "As I am ill, I cannot go there; but I shall do the needful from here.", "a": "Compound-Complex. (1) I cannot go there — Principal. (2) As I am ill — Adverbial Clause of Reason, qualifying (1). (3) I shall do the needful from here — Principal, co-ordinate with (1) [but]."}, {"q": "You must work hard, otherwise you will fail.", "a": "Compound. (1) You must work hard — Principal. (2) otherwise you will fail — Principal, co-ordinate with (1)."}, {"q": "If you go there, you will be rewarded.", "a": "Complex. (1) If you go there — Adverbial Clause of Condition, qualifying (2). (2) you will be rewarded — Principal."}, {"q": "I do not want you to go there without your father's permission.", "a": "Simple — one finite verb (\"do…want\"); \"to go there\" is an infinitive phrase, \"without your father's permission\" is an adverbial phrase."}, {"q": "When I heard that the boy had fallen from the tree, I at once ran to his house and gave him all the help that I could give.", "a": "Complex. (1) I at once ran to his house and gave him all the help — Principal. (2) When I heard — Adverbial Clause of Time, qualifying (1). (3) that the boy had fallen from the tree — Noun Clause, object of \"heard\". (4) that I could give — Adjective Clause, qualifying \"help\"."}]}]}, {"id": "ex58", "label": "Exercise 58", "chapter": "Ch. XXXVI — Subject &amp; Adjuncts", "chapterBn": "অধ্যায় ৩৬ — Subject ও Adjunct", "parts": [{"label": "Subjects &amp; Adjuncts to Subjects", "labelBn": "Subject ও তার Adjunct", "instr": "Pick out the Subjects and Adjuncts to Subjects:", "explainBn": "মূল Subject শব্দটি এবং তাকে বিশেষিতকারী অংশগুলো (Adjunct) আলাদাভাবে চিহ্নিত করা হয়েছে.", "items": [{"q": "A good boy minds his lessons.", "a": "Subject: boy. Adjuncts to Subject: A, good."}, {"q": "The letter-box is red.", "a": "Subject: letter-box. Adjunct: The."}, {"q": "A young man of strong character is required for the post.", "a": "Subject: man. Adjuncts: A, young, of strong character."}, {"q": "Seeing me there, he dared not open his mouth.", "a": "Subject: he. Adjunct: Seeing me there (participial phrase)."}, {"q": "A few flying birds, about ten in number, were shot down.", "a": "Subject: birds. Adjuncts: A few, flying, about ten in number."}, {"q": "The report of his death is not true.", "a": "Subject: report. Adjuncts: The, of his death."}, {"q": "Having finished his work, he left for home.", "a": "Subject: he. Adjunct: Having finished his work (participial phrase)."}, {"q": "The boy standing there is my brother.", "a": "Subject: boy. Adjuncts: The, standing there."}, {"q": "The sweet days of our boyhood are gone for ever.", "a": "Subject: days. Adjuncts: The, sweet, of our boyhood."}, {"q": "The city of Calcutta was formerly the capital of India.", "a": "Subject: city. Adjuncts: The, of Calcutta."}, {"q": "The teacher, coming to know of his conduct, ordered him out.", "a": "Subject: teacher. Adjuncts: The, coming to know of his conduct."}]}]}, {"id": "ex59", "label": "Exercise 59", "chapter": "Ch. XXXVI — Adverbial Adjuncts", "chapterBn": "অধ্যায় ৩৬ — Adverbial Adjunct", "parts": [{"label": "Adverbial Adjuncts", "labelBn": "Adverbial Adjunct", "instr": "Pick out the Adverbial Adjuncts:", "explainBn": "যে অংশ ক্রিয়াপদকে কীভাবে/কখন/কোথায়/কেন প্রশ্নের উত্তর দেয়, তাকে Adverbial Adjunct বলে.", "items": [{"q": "He played very well.", "a": "Adverbial Adjunct: \"well\" (qualified further by \"very\")."}, {"q": "She came to see my brother.", "a": "Adverbial Adjunct: \"to see my brother\" (Gerundial Infinitive of purpose)."}, {"q": "It is three feet high.", "a": "Adverbial Adjunct: \"three feet\" (adverbial object of measure)."}, {"q": "She said this to me.", "a": "Adverbial Adjunct: \"to me\"."}, {"q": "The brothers walked three miles together.", "a": "Adverbial Adjuncts: \"three miles\", \"together\"."}, {"q": "He broke off in the middle of his speech.", "a": "Adverbial Adjunct: \"in the middle of his speech\"."}, {"q": "This was said by him to my brother.", "a": "Adverbial Adjuncts: \"by him\" (agent), \"to my brother\"."}, {"q": "He worked hard to pass the examination.", "a": "Adverbial Adjuncts: \"hard\", \"to pass the examination\" (purpose)."}, {"q": "The task was finished by him quickly.", "a": "Adverbial Adjuncts: \"by him\" (agent), \"quickly\"."}, {"q": "My father having died, I had to take charge of the family.", "a": "Adverbial Adjunct: \"My father having died\" (Absolute phrase)."}, {"q": "I have come after a long time to see my brother.", "a": "Adverbial Adjuncts: \"after a long time\", \"to see my brother\"."}, {"q": "I am angry with you for having opposed me.", "a": "Adverbial Adjunct: \"for having opposed me\"."}, {"q": "He was punished for disobedience.", "a": "Adverbial Adjunct: \"for disobedience\"."}, {"q": "Dinner over, they left the place.", "a": "Adverbial Adjunct: \"Dinner over\" (Absolute phrase)."}, {"q": "I gave a pen to him.", "a": "Adverbial Adjunct: \"to him\"."}]}]}, {"id": "ex60", "label": "Exercise 60", "chapter": "Ch. XXXVI — Object &amp; Complement", "chapterBn": "অধ্যায় ৩৬ — Object ও Complement", "parts": [{"label": "Objects, Adjuncts to Objects, Complements", "labelBn": "Object, তার Adjunct, ও Complement", "instr": "Pick out the Objects, Adjuncts to Objects, and Complements:", "explainBn": "Verb-এর পরের Noun/Pronoun হলো Object; আর Subject/Object সম্পর্কে অতিরিক্ত তথ্য দেয় এমন অংশ হলো Complement.", "items": [{"q": "I found him dead.", "a": "Object: him. Complement (Objective): dead."}, {"q": "He gave me his own book.", "a": "Objects: me (indirect), book (direct). Adjunct to object: his own."}, {"q": "He seems to be happy.", "a": "Complement (Subjective, Infinitive): to be happy."}, {"q": "The sun looks small from a distance.", "a": "Complement (Subjective): small."}, {"q": "I use a pen made in India.", "a": "Object: pen. Adjunct to object: made in India."}, {"q": "This is a charming scenery.", "a": "Complement (Subjective): a charming scenery."}, {"q": "He appears to be angry.", "a": "Complement (Subjective): to be angry."}, {"q": "I want you to do this.", "a": "Object: you. Complement (Objective): to do this."}, {"q": "He ordered me to go.", "a": "Object: me. Complement (Objective): to go."}, {"q": "He hit the dog on the street.", "a": "Object: dog. Adverbial Adjunct: on the street."}, {"q": "I consider him a fool.", "a": "Object: him. Complement (Objective): a fool."}, {"q": "They made him Secretary of the club.", "a": "Object: him. Complement (Objective): Secretary of the club."}, {"q": "He called me a liar.", "a": "Object: me. Complement (Objective): a liar."}, {"q": "I was called a liar.", "a": "Complement (Subjective, passive voice): a liar."}, {"q": "The truth is this.", "a": "Complement (Subjective): this."}, {"q": "This house is his.", "a": "Complement (Subjective, Possessive): his."}, {"q": "We found him guilty of the offence.", "a": "Object: him. Complement (Objective): guilty of the offence."}, {"q": "The story is this.", "a": "Complement (Subjective): this."}, {"q": "I heard him say that he wished to succeed in life.", "a": "Object: him. Complement (Objective, Infinitive): say that he wished to succeed in life."}, {"q": "He was appointed Headmaster of the school.", "a": "Complement (Subjective): Headmaster of the school."}]}]}, {"id": "ex61", "label": "Exercise 61", "chapter": "Ch. XXXVII — Analyse Simple Sentences", "chapterBn": "অধ্যায় ৩৭ — Simple Sentence বিশ্লেষণ", "parts": [{"label": "Full analysis of Simple Sentences", "labelBn": "সম্পূর্ণ বিশ্লেষণ", "instr": "Analyse the following Simple Sentences:", "explainBn": "প্রতিটি বাক্যকে Subject, Adjunct, Verb, Object, Complement ও Adverbial Adjunct — এই অংশে ভাগ করে দেখানো হয়েছে.", "items": [{"q": "On hearing of my misfortune, all my friends ran to my help.", "a": "Subject: friends. Adjuncts to Subject: all, my. Finite Verb: ran. Adverbial Adjuncts: On hearing of my misfortune; to my help."}, {"q": "His new friend gave him the other day two good books.", "a": "Subject: friend. Adjuncts: His, new. Finite Verb: gave. Object: books (Adjuncts to object: two, good); Indirect Object: him. Adverbial Adjunct: the other day."}, {"q": "Long ago, there lived in India a king named Asoka the Great, one of the greatest kings of all times.", "a": "Subject: king. Adjuncts: a, named Asoka the Great, one of the greatest kings of all times. Finite Verb: lived. Adverbial Adjuncts: Long ago; there (introductory); in India."}, {"q": "Emperor Nasiruddin was an ideal ruler, never spending a single farthing from the Royal Treasury for his personal needs.", "a": "Subject: Emperor Nasiruddin. Finite Verb: was. Complement: an ideal ruler. Adverbial Adjunct (participial phrase): never spending a single farthing from the Royal Treasury for his personal needs."}, {"q": "Having finished our work, we all left for our respective houses, happy and contented.", "a": "Subject: we. Adjunct: all. Finite Verb: left. Adverbial Adjuncts: Having finished our work; for our respective houses; happy and contented."}, {"q": "The other day the monitor of our class took a boy to task for disorderly conduct in the absence of the teacher.", "a": "Subject: monitor. Adjuncts: The, of our class. Finite Verb: took. Object: a boy. Adverbial Adjuncts: The other day; to task; for disorderly conduct; in the absence of the teacher."}, {"q": "Since my departure from Calcutta, I have been trying to the best of my power spread education among the simple village people.", "a": "Subject: I. Finite Verb: have been trying. Object: to spread education among the simple village people (infinitive phrase). Adverbial Adjuncts: Since my departure from Calcutta; to the best of my power."}, {"q": "Within a short time after the death of Muhammad, the religion founded by him spread to a considerable portion of the world.", "a": "Subject: religion. Adjuncts: the, founded by him. Finite Verb: spread. Adverbial Adjuncts: Within a short time after the death of Muhammad; to a considerable portion of the world."}, {"q": "An intelligent boy, the son of a very poor man, badly needs your help to be able to continue his studies.", "a": "Subject: boy. Adjuncts: An, intelligent, the son of a very poor man. Finite Verb: needs. Object: help (Adjunct: your). Adverbial Adjuncts: badly; to be able to continue his studies."}, {"q": "Finding me absent, the servant of my neighbour, a lad of thirteen, entered my bed-room for the purpose of stealing my watch there.", "a": "Subject: servant. Adjuncts: the, 
